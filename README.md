@@ -1,9 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Book-a-jet 
+# Book-a-jet
 
 > This is an educational project to create the front-end part of the project.
-
 
 ## Built With 🛠️
 
@@ -22,11 +21,13 @@ To get a local copy up and running follow these simple steps.
 - [x] A code editor like Visual Studio Code with Git and React.
 
 You can check if Git is installed by running the following command in the terminal.
+
 ```
 $ git --version
 ```
 
 To install the app, in the terminal kindly run this command
+
 ```
 $ npm install
 ```
@@ -53,10 +54,10 @@ You can run this command below:
 $ npm start
 ```
 
-
 ## Authors
 
 👤 **Worash Abocherugn**
+
 - GitHub: [@githubhandle](https://github.com/worashf)
 - Twitter: [@twitterhandle](https://twitter.com/WorashAboche)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/worash-abocherugn-a02219154/)
@@ -64,11 +65,11 @@ $ npm start
 👤 **Mike Martine**
 
 - GitHub: [
-@mikemtzp
-](https://github.com/mikemtzp)
+  @mikemtzp
+  ](https://github.com/mikemtzp)
 - Twitter: [
-@mikemtzp
-](https://twitter.com/mikemtzp)
+  @mikemtzp
+  ](https://twitter.com/mikemtzp)
 - LinkedIn: [Mike Martínez](https://www.linkedin.com/in/mike-mart%C3%ADnez/)
 
 👤 **Tom Milanesi**
@@ -79,10 +80,9 @@ $ npm start
 
 👤 **Alex Masangana**
 
-  - GitHub: [![GitHub Badge](https://img.shields.io/badge/-Alexander-white?logo=GitHub&logoColor=181717&style=plastic)](https://github.com/masangana)
-  - Twitter: [![Twitter Badge](https://img.shields.io/badge/-Alexander-white?logo=Twitter&logoColor=1DA1F2&style=plastic)](https://twitter.com/alexmasangana)
-  - Gmail: [![Gmail Badge](https://img.shields.io/badge/-@Alexander-white?logo=Gmail&logoColor=EA4335&style=plastic)](mailto:alexmasangana@gmail.com)
-
+- GitHub: [![GitHub Badge](https://img.shields.io/badge/-Alexander-white?logo=GitHub&logoColor=181717&style=plastic)](https://github.com/masangana)
+- Twitter: [![Twitter Badge](https://img.shields.io/badge/-Alexander-white?logo=Twitter&logoColor=1DA1F2&style=plastic)](https://twitter.com/alexmasangana)
+- Gmail: [![Gmail Badge](https://img.shields.io/badge/-@Alexander-white?logo=Gmail&logoColor=EA4335&style=plastic)](mailto:alexmasangana@gmail.com)
 
 ## 🤝 Contributing
 
@@ -102,4 +102,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/KaskMIL/git@github.com:KaskMIL/book-a-jet-front-end.git/blob/dev/MIT.md) licensed.
