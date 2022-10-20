@@ -102,4 +102,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/KaskMIL/book-a-jet-front-end.git/blob/dev/MIT.md) licensed.
+This project is [MIT](https://github.com/KaskMIL/book-a-jet-front-end/blob/dev/MIT.md) licensed.
