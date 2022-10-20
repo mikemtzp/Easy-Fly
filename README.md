@@ -1,46 +1,105 @@
-# Getting Started with Create React App and Redux
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Book-a-jet
 
-## Available Scripts
+> In the Book a Jet app you can reserve a jet in a specific range of date, see the details from a jet model, see or cancel your reservations, and add or delete a new jet to be available for reservation. This repo manages all the necessary to run the Front-End needed to display and manipulate the data retrieved from the API [Book-a-Jet-Back-End](https://github.com/KaskMIL/book-a-jet-backend).
 
-In the project directory, you can run:
+## Built With 🛠️
 
-### `npm start`
+- [x] Programming Language: [JavaScript](https://www.javascript.com/)
+- [x] Framework:[React](https://reactjs.org/)
+- [x] Linter: [stylelint](https://stylelint.io/)
+- [x] Code Editor: [VS Code](https://code.visualstudio.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get a local copy up and running follow these simple steps.
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] A web browser like Google Chrome.
+- [x] A code editor like Visual Studio Code with Git and React.
 
-### `npm run build`
+You can check if Git is installed by running the following command in the terminal.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ git --version
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To install the app, in the terminal kindly run this command
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ npm install
+```
 
-### `npm run eject`
+### Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Clone the repository using the GitHub link provided below.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+In the terminal, go to your file directory and run this command.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+$ gh repo clone KaskMIL/book-a-jet-front-end
+```
 
-## Learn More
+### Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Kindly modify the files as needed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can run this command below:
+
+```
+$ npm start
+```
+
+## Authors
+
+👤 **Worash Abocherugn**
+
+- GitHub: [@githubhandle](https://github.com/worashf)
+- Twitter: [@twitterhandle](https://twitter.com/WorashAboche)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/worash-abocherugn-a02219154/)
+
+👤 **Mike Martine**
+
+- GitHub: [
+  @mikemtzp
+  ](https://github.com/mikemtzp)
+- Twitter: [
+  @mikemtzp
+  ](https://twitter.com/mikemtzp)
+- LinkedIn: [Mike Martínez](https://www.linkedin.com/in/mike-mart%C3%ADnez/)
+
+👤 **Tom Milanesi**
+
+- GitHub: [@TomMilanesi](https://github.com/KaskMIL)
+- Twitter: [@TomMilanesi](https://twitter.com/TomasMilanesi)
+- LinkedIn: [Tomas Milanesi](https://www.linkedin.com/in/tomas-milanesi-3427bb185/)
+
+👤 **Alex Masangana**
+
+- GitHub: [![GitHub Badge](https://img.shields.io/badge/-Alexander-white?logo=GitHub&logoColor=181717&style=plastic)](https://github.com/masangana)
+- Twitter: [![Twitter Badge](https://img.shields.io/badge/-Alexander-white?logo=Twitter&logoColor=1DA1F2&style=plastic)](https://twitter.com/alexmasangana)
+- Gmail: [![Gmail Badge](https://img.shields.io/badge/-@Alexander-white?logo=Gmail&logoColor=EA4335&style=plastic)](mailto:alexmasangana@gmail.com)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/KaskMIL/book-a-jet-front-end/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- [Microverse](https://www.microverse.org/)
+- [Murat Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
+- Code Reviewers
+
+## 📝 License
+
+This project is [MIT](https://github.com/KaskMIL/book-a-jet-front-end/blob/dev/MIT.md) licensed.
