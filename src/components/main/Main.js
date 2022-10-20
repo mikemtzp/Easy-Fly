@@ -1,10 +1,15 @@
 import React from 'react';
 
+import Nav from '../nav/Nav';
+
 function Main() {
   return (
-    <main>
-      <h1>Hello main component!</h1>
-    </main>
+    <>
+      <Nav />
+      <main>
+        <h1>Hello main component!</h1>
+      </main>
+    </>
   );
 }
 
