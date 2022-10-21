@@ -18,7 +18,7 @@ function Nav() {
         </li>
         <li>
           <NavLink
-            to="/jets"
+            to="/reserve"
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             Reserve
@@ -26,7 +26,7 @@ function Nav() {
         </li>
         <li>
           <NavLink
-            to="/jets"
+            to="/myReserve"
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             My Reservs
@@ -34,7 +34,7 @@ function Nav() {
         </li>
         <li>
           <NavLink
-            to="/jets"
+            to="/addJet"
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             Add Jet
@@ -42,7 +42,7 @@ function Nav() {
         </li>
         <li>
           <NavLink
-            to="/jets"
+            to="/deleteJets"
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             Delete Jet
