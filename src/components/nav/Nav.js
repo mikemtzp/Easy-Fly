@@ -5,21 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/styles/nav.scss';
 
 function Nav() {
-  const activeStyle = {
-    TextDecoration: 'underline',
-    fontSize: '25px',
-    color: 'white',
-    backgroundColor: 'green',
-  };
-
   return (
     <nav className="col-auto min-vh-100 border">
       <ul className="nav-ul">
         <li>
           <NavLink
             to="/"
-            style={({ isActive }) => (isActive ? activeStyle : null)}
-            className="nav-link"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             Home
           </NavLink>
@@ -27,8 +19,7 @@ function Nav() {
         <li>
           <NavLink
             to="/jets"
-            style={({ isActive }) => (isActive ? activeStyle : null)}
-            className="nav-link"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             Reserve
           </NavLink>
@@ -36,8 +27,7 @@ function Nav() {
         <li>
           <NavLink
             to="/jets"
-            style={({ isActive }) => (isActive ? activeStyle : null)}
-            className="nav-link"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             My Reservs
           </NavLink>
@@ -45,8 +35,7 @@ function Nav() {
         <li>
           <NavLink
             to="/jets"
-            style={({ isActive }) => (isActive ? activeStyle : null)}
-            className="nav-link"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             Add Jet
           </NavLink>
@@ -54,8 +43,7 @@ function Nav() {
         <li>
           <NavLink
             to="/jets"
-            style={({ isActive }) => (isActive ? activeStyle : null)}
-            className="nav-link"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
             Delete Jet
           </NavLink>
