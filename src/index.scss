@@ -9,6 +9,11 @@ html {
   box-sizing: inherit;
 }
 
+// Variables
+
+$background-color: white;
+$font: 'Roboto';
+
 body {
   margin: 0;
   font-family:
@@ -26,6 +31,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
+  min-height: 100vh;
+  background: $background-color;
+  font-family: $font;
+  overflow-x: hidden;
 }
 
 code {
