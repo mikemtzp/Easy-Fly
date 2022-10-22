@@ -1,55 +1,45 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../assets/styles/nav.scss';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import SidebarData from './SidebarData';
+import './temp.scss';
 
 function Nav() {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSideBar = () => setSidebar(!sidebar);
+
   return (
-    <nav className="col-auto min-vh-100 border">
-      <ul className="nav-ul">
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/reserve"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            Reserve
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/myReserve"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            My Reservs
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/addJet"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            Add Jet
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/deleteJets"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            Delete Jet
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <div className="navbar">
+        <Link to="/" className="menu-bars">
+          <FaIcons.FaBars onClick={showSideBar} />
+        </Link>
+      </div>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+        <ul className="nav-menu-items">
+          <li className="navbar-toggle">
+            <Link to="/" className="menu-bars">
+              <AiIcons.AiOutlineClose onClick={showSideBar} />
+            </Link>
+          </li>
+          {SidebarData.map((item) => {
+            const {
+              title, path, icon, cName, key,
+            } = item;
+            return (
+              <li key={key} className={cName}>
+                <Link to={path} onClick={showSideBar}>
+                  {icon}
+                  <span>{title}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </>
   );
 }
 
