@@ -13,16 +13,12 @@ function Nav() {
   return (
     <>
       <div className="navbar">
-        <Link to="/" className="menu-bars">
-          <FaIcons.FaBars onClick={showSideBar} />
-        </Link>
+        <FaIcons.FaBars onClick={showSideBar} className="menu-bars" />
       </div>
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
-            <Link to="/" className="menu-bars">
-              <AiIcons.AiOutlineClose onClick={showSideBar} />
-            </Link>
+            <AiIcons.AiOutlineClose onClick={showSideBar} className="menu-bars" />
           </li>
           {SidebarData.map((item) => {
             const {
