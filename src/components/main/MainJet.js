@@ -7,22 +7,26 @@ import * as FaIcons from 'react-icons/fa';
 function MainJet(props) {
   const { name, description } = props;
   return (
-    <>
-      <article>
-        <div>
-          <img src="https://via.placeholder.com/150x150" alt="Jet" />
-        </div>
-        <div>
-          <h2>{name}</h2>
-          <p>{description}</p>
-        </div>
+    <article>
+      <div>
+        <img src="https://via.placeholder.com/150x150" alt="Jet" />
+      </div>
+      <div>
+        <h2>{name}</h2>
+        <p>{description}</p>
+      </div>
+      <div>
         <div>
           <FaIcons.FaFacebookF />
+        </div>
+        <div>
           <FaIcons.FaTwitter />
+        </div>
+        <div>
           <FaIcons.FaInstagramSquare />
         </div>
-      </article>
-    </>
+      </div>
+    </article>
   );
 }
 
