@@ -2,6 +2,8 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as IoIcons from 'react-icons/io5';
 import * as MdIcons from 'react-icons/md';
+import * as BtIcons from 'react-icons/bi';
+import * as ImIcons from "react-icons/im";
 
 const SidebarData = [
   {
@@ -40,18 +42,18 @@ const SidebarData = [
     key: 'deleteJet',
   },
   {
-    title: 'Sign Up',
-    path: '/signup',
-    icon: <MdIcons.MdAirplanemodeInactive />,
-    cName: 'nav-text',
-    key: 'signup',
-  },
-  {
     title: 'Login',
     path: '/login',
-    icon: <MdIcons.MdAirplanemodeInactive />,
+    icon: <BtIcons.BiLogIn />,
     cName: 'nav-text',
     key: 'login',
+  },
+  {
+    title: 'Sign Up',
+    path: '/signup',
+    icon: <ImIcons.ImUserPlus />,
+    cName: 'nav-text',
+    key: 'signup',
   },
 ];
 
