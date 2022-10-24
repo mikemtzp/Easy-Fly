@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { loginApi } from '../auth-api/AuthApi';
 
 const LoginFrom = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const loginUser = {
-      email,
+      username,
       password,
     };
     const res = await loginApi(loginUser);
@@ -27,10 +27,10 @@ const LoginFrom = () => {
       <form onSubmit={handleLogin}>
         <TextField
           variant="standard"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter your username"
         />
         <TextField
           type="password"
