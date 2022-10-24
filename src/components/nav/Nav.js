@@ -57,15 +57,20 @@ function Nav() {
           </nav>
         </>
       ) : (
-        <nav>
-          <ul>
+        <nav className="desk-nav">
+          <div className="logo">
+            <Link to="/">
+              Logo
+            </Link>
+          </div>
+          <ul className="item-container">
             {SidebarData.map((item) => {
               const {
                 title, path, icon, key,
               } = item;
               return (
                 <li key={key} className="desktop-ba">
-                  <Link to={path} onClick={showSideBar}>
+                  <Link to={path}>
                     {icon}
                     <span>{title}</span>
                   </Link>
