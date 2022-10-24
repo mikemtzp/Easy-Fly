@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import getJets from './jetAPI';
 
 const jetSlice = createSlice({
   name: 'jets',
