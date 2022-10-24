@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Style
+import './mainJet.scss';
+
 // Icons
 import * as FaIcons from 'react-icons/fa';
 
 function MainJet(props) {
-  const { name, description } = props;
+  const { name, description, key } = props;
   return (
-    <article>
+    <article key={key} className="jet-container">
       <div>
         <img src="https://via.placeholder.com/150x150" alt="Jet" />
       </div>
@@ -33,6 +36,7 @@ function MainJet(props) {
 MainJet.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  key: PropTypes.string.isRequired,
 };
 
 export default MainJet;
