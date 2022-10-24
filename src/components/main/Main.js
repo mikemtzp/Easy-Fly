@@ -5,9 +5,9 @@ function Main() {
   const { jets } = useSelector((state) => state.jets);
 
   return (
-
     <main className="col">
       <h1>{jets}</h1>
+      <p color="primary"> main page</p>
     </main>
   );
 }

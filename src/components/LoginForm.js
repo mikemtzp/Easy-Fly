@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { loginApi } from '../auth-api/AuthApi';
 
 const LoginFrom = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const login_user = {
+    const loginUser = {
       email,
       password,
     };
-    const res = await loginApi(login_user);
-    console.log(res);
+    const res = await loginApi(loginUser);
+    if (res.status === 200) {
+      localStorage.setItem('token', res.data.token);
+      navigate('/');
+      console.log(res.data.token);
+    }
   };
 
   return (

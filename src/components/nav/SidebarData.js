@@ -39,6 +39,20 @@ const SidebarData = [
     cName: 'nav-text',
     key: 'deleteJet',
   },
+  {
+    title: 'Sign Up',
+    path: '/signup',
+    icon: <MdIcons.MdAirplanemodeInactive />,
+    cName: 'nav-text',
+    key: 'signup',
+  },
+  {
+    title: 'Login',
+    path: '/login',
+    icon: <MdIcons.MdAirplanemodeInactive />,
+    cName: 'nav-text',
+    key: 'login',
+  },
 ];
 
 export default SidebarData;
