@@ -1,4 +1,3 @@
-import { wait } from '@testing-library/user-event/dist/types/utils';
 import axios from 'axios';
 import api from '../config';
 
@@ -13,7 +12,7 @@ export const loginApi = async (loginData) => {
 
 export const signupApi = async (user) => {
   try {
-    const ress = await axios.post(`${api}/signup`, { user });
+    const res = await axios.post(`${api}/signup`, { user });
     return res;
   } catch (err) {
     throw new Error(err);

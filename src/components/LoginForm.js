@@ -13,6 +13,7 @@ const LoginFrom = () => {
       password,
     };
     const res = await loginApi(login_user);
+    console.log(res);
   };
 
   return (
