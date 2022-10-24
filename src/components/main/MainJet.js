@@ -9,6 +9,7 @@ import * as FaIcons from 'react-icons/fa';
 
 function MainJet(props) {
   const { name, description, key } = props;
+
   return (
     <article key={key} className="jet-container">
       <div>
@@ -18,14 +19,14 @@ function MainJet(props) {
         <h2>{name}</h2>
         <p>{description}</p>
       </div>
-      <div>
-        <div>
+      <div className="social-container">
+        <div className="icon-container">
           <FaIcons.FaFacebookF />
         </div>
-        <div>
+        <div className="icon-container">
           <FaIcons.FaTwitter />
         </div>
-        <div>
+        <div className="icon-container">
           <FaIcons.FaInstagramSquare />
         </div>
       </div>
