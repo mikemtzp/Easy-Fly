@@ -3,7 +3,9 @@ import getJets from './jetAPI';
 
 const jetSlice = createSlice({
   name: 'jets',
-  initialState: [],
+  initialState: {
+    jets: [],
+  },
   extraReducers: {
     [getJets.pending]: (state) => ({
       ...state,
