@@ -8,10 +8,10 @@ import './mainJet.scss';
 import * as FaIcons from 'react-icons/fa';
 
 function MainJet(props) {
-  const { name, description, key } = props;
+  const { name, description } = props;
 
   return (
-    <article key={key} className="jet-container">
+    <article className="jet-container">
       <div>
         <img src="https://via.placeholder.com/150x150" alt="Jet" />
       </div>
@@ -37,7 +37,6 @@ function MainJet(props) {
 MainJet.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  key: PropTypes.string.isRequired,
 };
 
 export default MainJet;
