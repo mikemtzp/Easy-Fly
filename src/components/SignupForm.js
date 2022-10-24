@@ -28,7 +28,6 @@ const SignupForm = () => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          label="standard"
           placeholder="Enter your name"
         />
         <TextField
@@ -36,7 +35,6 @@ const SignupForm = () => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          label="standard"
           placeholder="Enter your username"
         />
         <TextField
@@ -44,7 +42,6 @@ const SignupForm = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          label="standard"
           placeholder="Enter your email"
         />
         <TextField
@@ -52,7 +49,6 @@ const SignupForm = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          label="standard"
           placeholder="Set your password"
         />
 
