@@ -33,7 +33,7 @@ function Nav() {
       {windowSize.innerWidth <= 390 ? (
         <>
           <div className="navbar">
-            <FaIcons.FaBars onClick={showSideBar} className="menu-bars" />
+            <FaIcons.FaBars onClick={showSideBar} className={!sidebar ? 'menu-bars' : 'hide'} />
           </div>
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
             <ul className="nav-menu-items">
@@ -56,7 +56,25 @@ function Nav() {
             </ul>
           </nav>
         </>
-      ) : <h2>{windowSize.innerWidth}</h2>}
+      ) : (
+        <nav>
+          <ul>
+            {SidebarData.map((item) => {
+              const {
+                title, path, icon, key,
+              } = item;
+              return (
+                <li key={key} className="desktop-ba">
+                  <Link to={path} onClick={showSideBar}>
+                    {icon}
+                    <span>{title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
     </>
   );
 }
