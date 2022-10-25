@@ -1,12 +1,11 @@
 html {
-  box-sizing: border-box;
   font-size: 62.5%;  // 1rem = 10px
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 // Variables
@@ -14,7 +13,6 @@ html {
 $background-color: white;
 
 body {
-  margin: 0;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -45,8 +43,8 @@ code {
     monospace;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+ul { list-style: none; }
+
+#root {
+  display: flex;
 }

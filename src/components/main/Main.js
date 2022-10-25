@@ -1,12 +1,49 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { useSelector } from 'react-redux';
-import MainJet from './MainJet';
+// import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
-import '~slick-carousel/slick/slick.css';
-import '~slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import MainJet from './MainJet';
+
+import './main.scss';
 
 function Main() {
-  const { jets } = useSelector((state) => state.jets);
+  // const { jets } = useSelector((state) => state.jets);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   const dummyData = [
     {
@@ -32,20 +69,23 @@ function Main() {
   ];
 
   return (
-    <main>
+    <div className="home">
       <h1>
         Jets Main Page
-        {jets}
+        {/* {jets} */}
       </h1>
-
-      {dummyData.map((data) => (
-        <MainJet
-          name={data.name}
-          description={data.description}
-          key={data.key}
-        />
-      ))}
-    </main>
+      <ul className="home__card-container">
+        <Slider {...settings}>
+          {dummyData.map((data) => (
+            <MainJet
+              name={data.name}
+              description={data.description}
+              key={data.key}
+            />
+          ))}
+        </Slider>
+      </ul>
+    </div>
   );
 }
 

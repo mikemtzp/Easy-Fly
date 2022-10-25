@@ -11,7 +11,7 @@ function MainJet(props) {
   const { name, description } = props;
 
   return (
-    <article className="jet-container">
+    <div className="jet-container">
       <div>
         <img src="https://via.placeholder.com/150x150" alt="Jet" />
       </div>
@@ -30,7 +30,7 @@ function MainJet(props) {
           <FaIcons.FaInstagramSquare />
         </div>
       </div>
-    </article>
+    </div>
   );
 }
 

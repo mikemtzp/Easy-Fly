@@ -1,0 +1,34 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  
+  &__card-container {
+    display: flex;
+    justify-content: center;
+
+    .slick-slider {
+      
+      width: 80vw;
+  
+      .slick-arrow {
+        &.slick-prev {
+          left: -3rem;
+          background-color: red;
+        }
+      
+        &.slick-next {
+          right: 1rem;
+          background-color: red;
+        }
+      }
+    }
+  }
+
+  
+}
+
+
+
+
+
