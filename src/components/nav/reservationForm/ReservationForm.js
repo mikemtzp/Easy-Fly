@@ -24,13 +24,14 @@ function ReservationForm() {
     },
   ];
 
-  const [jetState, setJet] = useState('Select jet');
+  const [jetState, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState('');
+  const [cityOrigin, setCity] = useState({ city: '' });
 
   const handleJet = (jet) => {
-    console.log(jet.target.value);
-    setJet(jet.target.value);
+    console.log(parseInt(jet.target.value, 10));
+    setJet(parseInt(jet.target.value, 10));
   };
 
   const handleForm = (e) => {
@@ -39,6 +40,7 @@ function ReservationForm() {
       jet_id: jetState,
       starting_date: startDate,
       finishing_date: finishDate,
+      city: cityOrigin,
     };
     console.log(reservation);
   };
@@ -52,6 +54,10 @@ function ReservationForm() {
   const handleFinishDate = (date) => {
     console.log(`finish date: ${date}`);
     setFinishDate(date);
+  };
+
+  const handleCity = (e) => {
+    setCity({ ...cityOrigin, city: e.target.value });
   };
 
   return (
@@ -84,6 +90,18 @@ function ReservationForm() {
             onChange={(date) => handleFinishDate(date)}
           />
         </div>
+        <div>
+          <label htmlFor="city">
+            Add city:
+            <input
+              id="city"
+              type="text"
+              value={cityOrigin.city}
+              onChange={(e) => handleCity(e)}
+            />
+          </label>
+        </div>
+
         <button type="submit">Reserve</button>
       </form>
     </>
