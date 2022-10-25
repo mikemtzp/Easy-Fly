@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+// Date-Picke css
+import 'react-datepicker/dist/react-datepicker.css';
 
 function ReservationForm() {
   // Simulates jets state:
@@ -22,6 +25,8 @@ function ReservationForm() {
   ];
 
   const [jetState, setJet] = useState('Select jet');
+  const [startDate, setStartDate] = useState(new Date());
+  const [finishDate, setFinishDate] = useState('');
 
   const handleJet = (jet) => {
     console.log(jet.target.value);
@@ -30,6 +35,23 @@ function ReservationForm() {
 
   const handleForm = (e) => {
     e.preventDefault();
+    const reservation = {
+      jet_id: jetState,
+      starting_date: startDate,
+      finishing_date: finishDate,
+    };
+    console.log(reservation);
+  };
+
+  const handleStartDate = (date) => {
+    console.log(`starting date: ${date}`);
+    setStartDate(date);
+    setFinishDate(date);
+  };
+
+  const handleFinishDate = (date) => {
+    console.log(`finish date: ${date}`);
+    setFinishDate(date);
   };
 
   return (
@@ -45,7 +67,24 @@ function ReservationForm() {
           </select>
         </label>
         {/* starting date */}
+        <div>
+          Select a starting date
+          <DatePicker
+            id="startDate"
+            selected={startDate}
+            onChange={(date) => handleStartDate(date)}
+          />
+        </div>
         {/* finish date */}
+        <div>
+          Select finish date
+          <DatePicker
+            id="finishDate"
+            selected={finishDate}
+            onChange={(date) => handleFinishDate(date)}
+          />
+        </div>
+        <button type="submit">Reserve</button>
       </form>
     </>
   );
