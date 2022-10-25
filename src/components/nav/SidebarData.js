@@ -14,14 +14,14 @@ const SidebarData = [
     key: 'home',
   },
   {
-    title: 'Reserv',
-    path: '/reserv',
+    title: 'Reservation',
+    path: '/reservation',
     icon: <MdIcons.MdAirplaneTicket />,
     cName: 'nav-text',
     key: 'reserv',
   },
   {
-    title: 'My Reservs',
+    title: 'My Reservations',
     path: '/myreserv',
     icon: <IoIcons.IoBookOutline />,
     cName: 'nav-text',
