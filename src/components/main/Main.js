@@ -1,15 +1,10 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/autoplay';
-
+import { useSelector } from 'react-redux';
 import MainJet from './MainJet';
 
 function Main() {
+  const { jets } = useSelector((state) => state.jets);
+
   const dummyData = [
     {
       name: 'Jet 1',
@@ -34,29 +29,15 @@ function Main() {
   ];
 
   return (
-    <main className="col">
-      <h1>Latest Models!</h1>
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        tag="section"
-      >
-        {dummyData.map((data) => (
-          <SwiperSlide
-            key={data.key}
-            tag="ul"
-            wrapperTag="li"
-          >
-            <MainJet
-              name={data.name}
-              description={data.description}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <main>
+      <h1>Jets Main Page {jets}</h1>
+      {dummyData.map((data) => (
+        <MainJet
+          name={data.name}
+          description={data.description}
+          key={data.key}
+        />
+      ))}
     </main>
   );
 }
