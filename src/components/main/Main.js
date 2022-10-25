@@ -30,7 +30,11 @@ function Main() {
 
   return (
     <main>
-      <h1>Jets Main Page {jets}</h1>
+      <h1>
+        Jets Main Page
+        {jets}
+      </h1>
+
       {dummyData.map((data) => (
         <MainJet
           name={data.name}
