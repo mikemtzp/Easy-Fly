@@ -1,6 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import MainJet from './MainJet';
+import Slider from 'react-slick';
+import '~slick-carousel/slick/slick.css';
+import '~slick-carousel/slick/slick-theme.css';
 
 function Main() {
   const { jets } = useSelector((state) => state.jets);
