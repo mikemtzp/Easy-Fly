@@ -27,21 +27,6 @@ function Main() {
           dots: true,
         },
       },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
     ],
   };
 
@@ -70,10 +55,10 @@ function Main() {
 
   return (
     <div className="home">
-      <h1>
-        Jets Main Page
-        {/* {jets} */}
-      </h1>
+      <div className="home__title">
+        <h1>LATEST MODELS</h1>
+        <p>Please select a Jet Model</p>
+      </div>
       <ul className="home__card-container">
         <Slider {...settings}>
           {dummyData.map((data) => (

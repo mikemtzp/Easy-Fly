@@ -8,7 +8,6 @@ import './App.css';
 
 function App() {
   return (
-    // <div className="container">
     <Router>
       <Nav />
       <Routes>
@@ -17,7 +16,6 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
       </Routes>
     </Router>
-    // </div>
   );
 }
 
