@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import postReservation from '../../../redux/reservation/reservationAPI';
 import 'react-datepicker/dist/react-datepicker.css';
+import './reservatioForm.scss';
 
 function ReservationForm() {
   // Simulates jets state:
@@ -67,47 +68,48 @@ function ReservationForm() {
 
   return (
     <>
-      <h2>Reservation Form</h2>
       {message ? (
         <div>{message}</div>
       ) : null}
-      <form onSubmit={handleForm}>
+      <form onSubmit={handleForm} className="reservation-form">
         {/* jet input */}
-        <label htmlFor="jet-select">
-          Select a jet
+        <label htmlFor="jet-select" className="select-container">
+          <div>Select a jet</div>
           <select id="jet-select" value={jetState} onChange={(e) => handleJet(e)}>
             {jets.map((jet) => <option key={`jet-${jet.jet_id}`} value={jet.jet_id}>{jet.jet_name}</option>)}
           </select>
         </label>
-        {/* starting date */}
-        <div>
-          Select a starting date
-          <DatePicker
-            id="startDate"
-            selected={startDate}
-            onChange={(date) => handleStartDate(date)}
-          />
-        </div>
-        {/* finish date */}
-        <div>
-          Select finish date
-          <DatePicker
-            id="finishDate"
-            selected={finishDate}
-            onChange={(date) => handleFinishDate(date)}
-          />
-        </div>
-        <div>
-          <label htmlFor="city">
-            Add city:
-            <input
-              id="city"
-              type="text"
-              value={cityOrigin.city}
-              onChange={(e) => handleCity(e)}
+        <div className="date-container">
+          {/* starting date */}
+          <div className="date-select">
+            <p>Select a starting date</p>
+            <div className="date-comp">
+              <DatePicker
+                id="startDate"
+                selected={startDate}
+                onChange={(date) => handleStartDate(date)}
+              />
+            </div>
+          </div>
+          {/* finish date */}
+          <div className="date-select">
+            <p>Select finish date</p>
+            <DatePicker
+              id="finishDate"
+              selected={finishDate}
+              onChange={(date) => handleFinishDate(date)}
             />
-          </label>
+          </div>
         </div>
+        <label htmlFor="city" className="city-label">
+          <div>Add city</div>
+          <input
+            id="city"
+            type="text"
+            value={cityOrigin.city}
+            onChange={(e) => handleCity(e)}
+          />
+        </label>
 
         <button type="submit">Reserve</button>
       </form>
