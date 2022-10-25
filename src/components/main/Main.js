@@ -1,9 +1,34 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import MainJet from './MainJet';
 
+import './main.scss';
+
 function Main() {
-  const { jets } = useSelector((state) => state.jets);
+  // const { jets } = useSelector((state) => state.jets);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+    ],
+  };
 
   const dummyData = [
     {
@@ -29,20 +54,23 @@ function Main() {
   ];
 
   return (
-    <main>
-      <h1>
-        Jets Main Page
-        {jets}
-      </h1>
-
-      {dummyData.map((data) => (
-        <MainJet
-          name={data.name}
-          description={data.description}
-          key={data.key}
-        />
-      ))}
-    </main>
+    <div className="home">
+      <div className="home__title">
+        <h1>LATEST MODELS</h1>
+        <p>Please select a Jet Model</p>
+      </div>
+      <ul className="home__card-container">
+        <Slider {...settings}>
+          {dummyData.map((data) => (
+            <MainJet
+              name={data.name}
+              description={data.description}
+              key={data.key}
+            />
+          ))}
+        </Slider>
+      </ul>
+    </div>
   );
 }
 

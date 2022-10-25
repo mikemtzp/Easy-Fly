@@ -78,11 +78,10 @@ span {
 
 //desktop
 .desk-nav {
-  width: 190px;
+  width: 15%;
   border-right: 1px solid rgb(222, 222, 222);
   height: 100vh;
-  margin-right: 1rem;
-  padding-left: 1rem;
+  position: relative;
 }
 
 .logo {
@@ -91,6 +90,6 @@ span {
 
 .item-container {
   .desktop-ba {
-    padding: 2rem 0;
+    padding: 2rem 0 0 1.5rem;
   }
 }
