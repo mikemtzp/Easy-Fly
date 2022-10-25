@@ -28,6 +28,7 @@ function ReservationForm() {
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState('');
   const [cityOrigin, setCity] = useState({ city: '' });
+  const [message, setMessage] = useState('');
 
   const handleJet = (jet) => {
     console.log(parseInt(jet.target.value, 10));
@@ -36,13 +37,17 @@ function ReservationForm() {
 
   const handleForm = (e) => {
     e.preventDefault();
-    const reservation = {
-      jet_id: jetState,
-      starting_date: startDate,
-      finishing_date: finishDate,
-      city: cityOrigin,
-    };
-    console.log(reservation);
+    if (jetState === '' || finishDate === '' || cityOrigin === '') {
+      setMessage('Fill all  the parameters!');
+    } else {
+      const reservation = {
+        jet_id: jetState,
+        starting_date: startDate,
+        finishing_date: finishDate,
+        city: cityOrigin,
+      };
+      console.log(reservation);
+    }
   };
 
   const handleStartDate = (date) => {
@@ -63,6 +68,9 @@ function ReservationForm() {
   return (
     <>
       <h2>Reservation Form</h2>
+      {message ? (
+        <div>{message}</div>
+      ) : null}
       <form onSubmit={handleForm}>
         {/* user input */}
         {/* jet input */}
