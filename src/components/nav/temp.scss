@@ -1,0 +1,96 @@
+.navbar {
+  height: 7rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 100%;
+}
+
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+  transition: 850ms;
+}
+
+.hide {
+  display: none;
+  transition: 850ms;
+}
+
+.nav-menu {
+  width: 190px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+  border-right: 1px solid rgb(222, 222, 222);
+  // background-color: rgba(6, 4, 5, 0.9);
+}
+
+.nav-menu.active {
+  left: 0;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.8rem 0 0.8rem 1.6rem;
+  height: 6rem;
+}
+
+.nav-text a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1.6rem;
+  border-radius: 0.5rem;
+  color: black;
+}
+
+.nav-text a:hover {
+  background-color: #1a83ff;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.navbar-toggle {
+  width: 100%;
+  padding: 3rem 1rem 0 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+span {
+  margin-left: 1.6rem;
+}
+
+//desktop
+.desk-nav {
+  width: 190px;
+  border-right: 1px solid rgb(222, 222, 222);
+  height: 100vh;
+  margin-right: 1rem;
+  padding-left: 1rem;
+}
+
+.logo {
+  margin-bottom: 4rem;
+}
+
+.item-container {
+  .desktop-ba {
+    padding: 2rem 0;
+  }
+}
