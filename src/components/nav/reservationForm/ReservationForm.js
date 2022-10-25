@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+// import { Navigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
+import postReservation from '../../../redux/reservation/reservationAPI';
 // Date-Picke css
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -35,18 +37,19 @@ function ReservationForm() {
     setJet(parseInt(jet.target.value, 10));
   };
 
-  const handleForm = (e) => {
+  const handleForm = async (e) => {
     e.preventDefault();
     if (jetState === '' || finishDate === '' || cityOrigin === '') {
       setMessage('Fill all  the parameters!');
     } else {
       const reservation = {
         jet_id: jetState,
-        starting_date: startDate,
-        finishing_date: finishDate,
-        city: cityOrigin,
+        starting_day: startDate.toDateString(),
+        finish_day: finishDate.toDateString(),
+        city: cityOrigin.city,
       };
-      console.log(reservation);
+      const res = await postReservation(reservation);
+      console.log(res);
     }
   };
 

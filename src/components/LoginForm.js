@@ -19,6 +19,7 @@ const LoginFrom = () => {
       localStorage.setItem('token', res.data.token);
       navigate('/');
       console.log(res.data.token);
+      console.log(res.data.id);
     }
   };
 
