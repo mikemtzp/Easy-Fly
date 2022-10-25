@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import postReservation from '../../../redux/reservation/reservationAPI';
-// Date-Picke css
 import 'react-datepicker/dist/react-datepicker.css';
 
 function ReservationForm() {
@@ -31,9 +30,9 @@ function ReservationForm() {
   const [finishDate, setFinishDate] = useState('');
   const [cityOrigin, setCity] = useState({ city: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleJet = (jet) => {
-    console.log(parseInt(jet.target.value, 10));
     setJet(parseInt(jet.target.value, 10));
   };
 
@@ -48,19 +47,17 @@ function ReservationForm() {
         finish_day: finishDate.toDateString(),
         city: cityOrigin.city,
       };
-      const res = await postReservation(reservation);
-      console.log(res);
+      await postReservation(reservation);
+      navigate('/');
     }
   };
 
   const handleStartDate = (date) => {
-    console.log(`starting date: ${date}`);
     setStartDate(date);
     setFinishDate(date);
   };
 
   const handleFinishDate = (date) => {
-    console.log(`finish date: ${date}`);
     setFinishDate(date);
   };
 
@@ -75,7 +72,6 @@ function ReservationForm() {
         <div>{message}</div>
       ) : null}
       <form onSubmit={handleForm}>
-        {/* user input */}
         {/* jet input */}
         <label htmlFor="jet-select">
           Select a jet
