@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
 import deleteReservation from '../../redux/myReservations/cancelReservationAPI';
+import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import './myReservationCard.scss';
 
 function MyReservationCard(props) {
@@ -10,6 +12,12 @@ function MyReservationCard(props) {
   } = props;
 
   const reservation = { id: reservationId };
+  const dispatch = useDispatch();
+
+  const handleCancel = () => {
+    deleteReservation(reservation);
+    dispatch(getMyReservations());
+  };
 
   return (
     <>
@@ -29,7 +37,7 @@ function MyReservationCard(props) {
         <span>Your Jet: ID-</span>
         {jetId}
       </Box>
-      <Button variant="contained" color="primary" onClick={() => deleteReservation(reservation)}>
+      <Button variant="contained" color="primary" onClick={() => handleCancel()}>
         Cancel Jet
       </Button>
     </>
