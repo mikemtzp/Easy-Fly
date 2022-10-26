@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Container from '@mui/material/Grid';
 import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import MyReservationCard from '../../components/myReservation/MyReservationCard';
 
@@ -11,11 +12,10 @@ function MyReservation() {
     if (!myReservations.length) {
       dispatch(getMyReservations());
     }
-    console.log(myReservations);
   });
 
   return (
-    <>
+    <Container justifyContent="center">
       <h1>My reservations Page</h1>
       <ul>
         {myReservations.map((reservation) => (
@@ -28,7 +28,7 @@ function MyReservation() {
           />
         ))}
       </ul>
-    </>
+    </Container>
   );
 }
 

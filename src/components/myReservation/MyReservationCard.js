@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Box } from '@mui/material';
 
 function MyReservationCard(props) {
   const {
@@ -7,12 +8,15 @@ function MyReservationCard(props) {
   } = props;
 
   return (
-    <li key={key}>
-      {city}
-      {startingDay}
-      {finishDay}
-      {jetId}
-    </li>
+    <Box key={key}>
+      <li>
+        {city}
+        {startingDay}
+        {finishDay}
+        {jetId}
+        {key}
+      </li>
+    </Box>
   );
 }
 

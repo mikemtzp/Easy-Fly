@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import postReservation from '../../redux/reservation/reservationAPI';
+import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './reservatioForm.scss';
 
@@ -32,6 +34,7 @@ function ReservationForm() {
   const [cityOrigin, setCity] = useState({ city: '' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleJet = (jet) => {
     setJet(parseInt(jet.target.value, 10));
@@ -49,7 +52,8 @@ function ReservationForm() {
         city: cityOrigin.city,
       };
       await postReservation(reservation);
-      navigate('/');
+      dispatch(getMyReservations());
+      navigate('/myreservations');
     }
   };
 
