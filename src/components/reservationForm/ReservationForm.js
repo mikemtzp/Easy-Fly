@@ -31,7 +31,7 @@ function ReservationForm() {
   const [jetState, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState('');
-  const [cityOrigin, setCity] = useState({ city: '' });
+  const [cityOrigin, setCity] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -44,12 +44,14 @@ function ReservationForm() {
     e.preventDefault();
     if (jetState === '' || finishDate === '' || cityOrigin === '') {
       setMessage('Fill all  the parameters!');
+    } if (startDate.getTime() > finishDate.getTime()) {
+      setMessage('Start date cant be in advance of the finish date');
     } else {
       const reservation = {
         jet_id: jetState,
         starting_day: startDate.toDateString(),
         finish_day: finishDate.toDateString(),
-        city: cityOrigin.city,
+        city: cityOrigin,
       };
       await postReservation(reservation);
       dispatch(getMyReservations());
@@ -64,10 +66,6 @@ function ReservationForm() {
 
   const handleFinishDate = (date) => {
     setFinishDate(date);
-  };
-
-  const handleCity = (e) => {
-    setCity({ ...cityOrigin, city: e.target.value });
   };
 
   return (
@@ -111,7 +109,7 @@ function ReservationForm() {
             id="city"
             type="text"
             value={cityOrigin.city}
-            onChange={(e) => handleCity(e)}
+            onChange={(e) => setCity(e.target.value)}
           />
         </label>
 
