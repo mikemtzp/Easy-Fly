@@ -1,0 +1,10 @@
+.myReservation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 100%;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+}

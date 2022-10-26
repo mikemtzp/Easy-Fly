@@ -1,21 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
+import './myReservationCard.scss';
 
 function MyReservationCard(props) {
   const {
-    key, city, startingDay, finishDay, jetId,
+    city, startingDay, finishDay, jetId, key,
   } = props;
 
   return (
-    <Box key={key}>
-      <li>
+    <Box key={key} className="myReservationCard-container">
+      <Box>
+        <span>Your Jet will be waiting for you in: </span>
         {city}
+      </Box>
+      <Box>
+        <span>The day: </span>
         {startingDay}
+      </Box>
+      <Box>
+        <span>Until the day: </span>
         {finishDay}
+      </Box>
+      <Box>
+        <span>Your Jet: ID-</span>
         {jetId}
-        {key}
-      </li>
+      </Box>
     </Box>
   );
 }
