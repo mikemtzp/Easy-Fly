@@ -5,6 +5,7 @@ import Main from './components/main/Main';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import ReservationPage from './pages/reservation/ReservationPage';
+import MyReservation from './pages/myReservation/MyReservationPage';
 import './App.css';
 
 function App() {
@@ -13,9 +14,10 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/reservation" element={<ReservationPage />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/reservation" element={<ReservationPage />} />
+        <Route path="/myreservations" element={<MyReservation />} />
       </Routes>
     </Router>
   );
