@@ -1,5 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
-import getJets from './jetAPI';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { getJets } from './jetAPI';
+
+const getJetsThunk = createAsyncThunk('jets/getJets', async () => {
+  const response = await getJets();
+  return response;
+});
 
 const jetSlice = createSlice({
   name: 'jets',
@@ -7,16 +12,16 @@ const jetSlice = createSlice({
     jets: [],
   },
   extraReducers: {
-    [getJets.pending]: (state) => ({
+    [getJetsThunk.pending]: (state) => ({
       ...state,
       status: 'pending',
     }),
-    [getJets.fulfilled]: (state, action) => ({
+    [getJetsThunk.fulfilled]: (state, action) => ({
       ...state,
       status: 'success',
       jets: action.payload,
     }),
-    [getJets.rejected]: (state) => ({
+    [getJetsThunk.rejected]: (state) => ({
       ...state,
       status: 'failed',
     }),
