@@ -8,6 +8,8 @@ const AddJetForm = () => {
   const [size, setSize] = useState('');
   const [category, setCategory] = useState('');
   const [image, setImage] = useState('');
+  const [pricePerDay, setPricePerDay] = useState('');
+  const [financeFee, setFinanceFee] = useState('');
 
   const handleNewJet = async (e) => {
     e.preventDefault();
@@ -17,6 +19,8 @@ const AddJetForm = () => {
     data.append('category', category);
     data.append('size', size);
     data.append('description', description);
+    data.append('pricePerDay', pricePerDay);
+    data.append('financeFee', financeFee);
     data.append('image', image);
     const res = await addNewJet(data);
     console.log(res);
@@ -46,12 +50,28 @@ const AddJetForm = () => {
           onChange={(e) => setSize(e.target.value)}
           label="Enter size"
         />
+
         <TextField
           variant="standard"
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           label="Enter category"
+        />
+
+        <TextField
+          variant="standard"
+          type="number"
+          value={pricePerDay}
+          onChange={(e) => setPricePerDay(e.target.value)}
+          label="Price per Day"
+        />
+        <TextField
+          variant="standard"
+          type="number"
+          value={financeFee}
+          onChange={(e) => setFinanceFee(e.target.value)}
+          label="Finance Fee"
         />
         <TextField
           variant="standard"
