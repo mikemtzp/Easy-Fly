@@ -1,5 +1,5 @@
 import React from 'react';
-import ReservationForm from '../../components/nav/reservationForm/ReservationForm';
+import ReservationForm from '../../components/reservationForm/ReservationForm';
 import './reservationPage.scss';
 
 function ReservationPage() {
