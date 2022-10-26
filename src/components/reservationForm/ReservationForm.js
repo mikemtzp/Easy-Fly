@@ -41,6 +41,8 @@ function ReservationForm() {
     e.preventDefault();
     if (jetState === '' || finishDate === '' || cityOrigin === '') {
       setMessage('Fill all  the parameters!');
+    } if (startDate.getTime() > finishDate.getTime()) {
+      setMessage('Start date cant be in advance of the finish date');
     } else {
       const reservation = {
         jet_id: jetState,
