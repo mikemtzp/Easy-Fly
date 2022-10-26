@@ -29,7 +29,7 @@ const SidebarData = [
   },
   {
     title: 'Add Jet',
-    path: '/addjet',
+    path: '/add-jet',
     icon: <MdIcons.MdAirplanemodeActive />,
     cName: 'nav-text',
     key: 'addJet',
