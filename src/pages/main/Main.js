@@ -4,8 +4,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import MainJet from './MainJet';
-
+import Jet from '../../components/jet/Jet';
 import './main.scss';
 
 function Main() {
@@ -62,7 +61,7 @@ function Main() {
       <ul className="home__card-container">
         <Slider {...settings}>
           {dummyData.map((data) => (
-            <MainJet
+            <Jet
               name={data.name}
               description={data.description}
               key={data.key}
