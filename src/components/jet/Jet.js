@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Style
-import './mainJet.scss';
+import './Jet.scss';
 
 // Icons
 import * as FaIcons from 'react-icons/fa';

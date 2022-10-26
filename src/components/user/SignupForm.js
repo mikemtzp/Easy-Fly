@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
-import { signupApi } from '../auth-api/AuthApi';
+import { signupApi } from '../../auth-api/AuthApi';
 
 const SignupForm = () => {
   const [username, setUsername] = useState('');
