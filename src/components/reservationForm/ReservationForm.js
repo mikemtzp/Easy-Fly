@@ -29,7 +29,7 @@ function ReservationForm() {
   const [jetState, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState('');
-  const [cityOrigin, setCity] = useState({ city: '' });
+  const [cityOrigin, setCity] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
@@ -48,7 +48,7 @@ function ReservationForm() {
         jet_id: jetState,
         starting_day: startDate.toDateString(),
         finish_day: finishDate.toDateString(),
-        city: cityOrigin.city,
+        city: cityOrigin,
       };
       await postReservation(reservation);
       navigate('/');
@@ -62,10 +62,6 @@ function ReservationForm() {
 
   const handleFinishDate = (date) => {
     setFinishDate(date);
-  };
-
-  const handleCity = (e) => {
-    setCity({ ...cityOrigin, city: e.target.value });
   };
 
   return (
@@ -109,7 +105,7 @@ function ReservationForm() {
             id="city"
             type="text"
             value={cityOrigin.city}
-            onChange={(e) => handleCity(e)}
+            onChange={(e) => setCity(e.target.value)}
           />
         </label>
 
