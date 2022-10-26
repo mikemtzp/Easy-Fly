@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getJets } from './jetAPI';
 
-const getJetsThunk = createAsyncThunk('jets/getJets', async () => {
+export const getJetsThunk = createAsyncThunk('jets/getJets', async () => {
   const response = await getJets();
   return response;
 });

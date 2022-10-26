@@ -14,7 +14,7 @@ export const addNewJet = async (jet) => {
 
 export const getJets = async () => {
   try {
-    const res = await axios.get(`${JETAPPI}/`);
+    const res = await axios.get(`${JETAPPI}/jets`);
     return res.data;
   } catch (err) {
     throw new Error('err');

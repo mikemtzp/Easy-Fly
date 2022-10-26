@@ -1,14 +1,23 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-// import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Jet from '../../components/jet/Jet';
 import './main.scss';
+import { getJetsThunk } from '../../redux/jets/jetSlice';
 
 function Main() {
   // const { jets } = useSelector((state) => state.jets);
+  const jets = useSelector((state) => state.jets.jets);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!jets.length) {
+      dispatch(getJetsThunk());
+    }
+  }, []);
 
   const settings = {
     dots: true,
@@ -26,31 +35,17 @@ function Main() {
           dots: true,
         },
       },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
     ],
   };
-
-  const dummyData = [
-    {
-      name: 'Jet 1',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet1',
-    },
-    {
-      name: 'Jet 2',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet2',
-    },
-    {
-      name: 'Jet 3',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet3',
-    },
-    {
-      name: 'Jet 4',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet4',
-    },
-  ];
 
   return (
     <div className="home">
@@ -60,11 +55,12 @@ function Main() {
       </div>
       <ul className="home__card-container">
         <Slider {...settings}>
-          {dummyData.map((data) => (
+          {jets.map((jet) => (
             <Jet
-              name={data.name}
-              description={data.description}
-              key={data.key}
+              name={jet.name}
+              description={jet.description}
+              image={jet.image}
+              key={jet.id}
             />
           ))}
         </Slider>
