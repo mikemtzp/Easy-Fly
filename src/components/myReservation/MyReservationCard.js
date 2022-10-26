@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import deleteReservation from '../../redux/myReservations/cancelReservationAPI';
 import './myReservationCard.scss';
 
 function MyReservationCard(props) {
   const {
-    city, startingDay, finishDay, jetId, key,
+    city, startingDay, finishDay, jetId, reservationId,
   } = props;
 
+  const reservation = { id: reservationId };
+
   return (
-    <Box key={key} className="myReservationCard-container">
+    <>
       <Box>
         <span>Your Jet will be waiting for you in: </span>
         {city}
@@ -26,12 +29,15 @@ function MyReservationCard(props) {
         <span>Your Jet: ID-</span>
         {jetId}
       </Box>
-    </Box>
+      <Button variant="contained" color="primary" onClick={() => deleteReservation(reservation)}>
+        Cancel Jet
+      </Button>
+    </>
   );
 }
 
 MyReservationCard.propTypes = {
-  key: PropTypes.number.isRequired,
+  reservationId: PropTypes.number.isRequired,
   city: PropTypes.string.isRequired,
   startingDay: PropTypes.string.isRequired,
   finishDay: PropTypes.string.isRequired,

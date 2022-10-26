@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from '@mui/material/Grid';
+import { Box } from '@mui/material';
 import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import MyReservationCard from '../../components/myReservation/MyReservationCard';
 import './myReservation.scss';
@@ -21,13 +22,15 @@ function MyReservation() {
       <h1>My reservations Page</h1>
       <section>
         {myReservations.map((reservation) => (
-          <MyReservationCard
-            city={reservation.city}
-            startingDay={reservation.starting_day}
-            finishDay={reservation.finish_day}
-            jetId={reservation.jet_id}
-            key={reservation.res_id}
-          />
+          <Box key={reservation.res_id} className="myReservationCard-container">
+            <MyReservationCard
+              city={reservation.city}
+              startingDay={reservation.starting_day}
+              finishDay={reservation.finish_day}
+              jetId={reservation.jet_id}
+              reservationId={reservation.res_id}
+            />
+          </Box>
         ))}
       </section>
     </Container>
