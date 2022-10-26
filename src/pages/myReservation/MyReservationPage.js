@@ -16,7 +16,7 @@ function MyReservation() {
     <>
       <h1>My reservations Page</h1>
       {myReservations.map((reservation) => (
-        reservation.starting_day
+        <h1 key={reservation.jet_id}>{reservation.city}</h1>
       ))}
     </>
   );
