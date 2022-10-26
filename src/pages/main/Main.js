@@ -1,16 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-// import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Jet from '../../components/jet/Jet';
 import './main.scss';
+import { getJetsThunk } from '../../redux/jets/jetSlice';
 
 function Main() {
-  // const { jets } = useSelector((state) => state.jets);
+  const { jets } = useSelector((state) => state.jets);
+  const dispatch = useDispatch();
 
-  const settings = {
+  useEffect(() => {
+    dispatch(getJetsThunk());
+  }, [dispatch]);
+
+  const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -29,29 +35,6 @@ function Main() {
     ],
   };
 
-  const dummyData = [
-    {
-      name: 'Jet 1',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet1',
-    },
-    {
-      name: 'Jet 2',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet2',
-    },
-    {
-      name: 'Jet 3',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet3',
-    },
-    {
-      name: 'Jet 4',
-      description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam voluptatibus deserunt',
-      key: 'jet4',
-    },
-  ];
-
   return (
     <div className="home">
       <div className="home__title">
@@ -59,12 +42,12 @@ function Main() {
         <p>Please select a Jet Model</p>
       </div>
       <ul className="home__card-container">
-        <Slider {...settings}>
-          {dummyData.map((data) => (
+        <Slider {...sliderSettings}>
+          {jets.map((data) => (
             <Jet
               name={data.name}
               description={data.description}
-              key={data.key}
+              key={data.id}
             />
           ))}
         </Slider>
