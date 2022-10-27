@@ -4,9 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import LeftArrow from '../../components/arrows/LeftArrow';
 import Jet from '../../components/jet/Jet';
 import './main.scss';
 import { getJetsThunk } from '../../redux/jets/jetSlice';
+import RightArrow from '../../components/arrows/RightArrow';
 
 function Main() {
   // const { jets } = useSelector((state) => state.jets);
@@ -17,7 +19,7 @@ function Main() {
     if (!jets.length) {
       dispatch(getJetsThunk());
     }
-  }, []);
+  });
 
   const settings = {
     dots: true,
@@ -25,6 +27,8 @@ function Main() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    prevArrow: <LeftArrow to="prev" />,
+    nextArrow: <RightArrow to="next" />,
     responsive: [
       {
         breakpoint: 1024,
