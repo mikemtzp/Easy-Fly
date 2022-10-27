@@ -15,6 +15,9 @@ const reservationSlice = createSlice({
     cancelReservation: (state, action) => {
       state.filter((reservation) => reservation.id !== action.payload);
     },
+    addReservation: (state, action) => {
+      state.reservations.push(action.payload);
+    },
   },
   extraReducers: {
     [getReservationsThunk.pending]: (state) => ({
@@ -33,4 +36,5 @@ const reservationSlice = createSlice({
   },
 });
 
+export const { cancelReservation, addReservation } = reservationSlice.actions;
 export default reservationSlice.reducer;

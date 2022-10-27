@@ -5,7 +5,7 @@ export const postReservation = async (reservation) => {
   try {
     const token = localStorage.getItem('token');
     const res = await axios.post(`${api}/add_reservation`, { reservation }, { headers: { Authorization: `Bearer ${token}` } });
-    return res;
+    return res.data;
   } catch (err) {
     throw new Error(err);
   }

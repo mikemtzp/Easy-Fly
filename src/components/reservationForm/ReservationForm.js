@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { postReservation } from '../../redux/reservation/reservationAPI';
-import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './reservatioForm.scss';
+import { addReservation } from '../../redux/reservation/reservationSlice';
 
 function ReservationForm() {
-  const jets = useSelector((state) => state.jets.jets);
-
-  const [jetState, setJet] = useState('');
+  const { jets } = useSelector((state) => state.jets);
+  const [jetState, setJet] = useState(jets[0].id);
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState(new Date());
   const [cityOrigin, setCity] = useState('');
@@ -25,6 +24,7 @@ function ReservationForm() {
 
   const handleForm = async (e) => {
     e.preventDefault();
+
     if (jetState === '' || finishDate === '' || cityOrigin === '') {
       setMessage('Fill all  the parameters!');
     } else if (startDate.getTime() > finishDate.getTime()) {
@@ -36,8 +36,8 @@ function ReservationForm() {
         finish_day: finishDate.toDateString(),
         city: cityOrigin,
       };
-      await postReservation(reservation);
-      dispatch(getMyReservations());
+      const newReservation = await postReservation(reservation);
+      dispatch(addReservation(newReservation.reservation));
       navigate('/myreservations');
     }
   };
@@ -67,7 +67,14 @@ function ReservationForm() {
 
         <label htmlFor="jet-select" className="select-container">
           <div>Select a jet</div>
-          <select id="jet-select" value={jetState} onChange={(e) => handleJet(e)}>
+          <select
+            id="jet-select"
+            value={jetState}
+            onChange={(e) => {
+              handleJet(e);
+              calculatePrice();
+            }}
+          >
             {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
           </select>
         </label>
