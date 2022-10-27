@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import { addNewJet } from '../../redux/jets/jetAPI';
+import { addJet } from '../../redux/jets/jetSlice';
 
 const AddJetForm = () => {
   const [name, setName] = useState('');
@@ -10,6 +12,8 @@ const AddJetForm = () => {
   const [image, setImage] = useState('');
   const [pricePerDay, setPricePerDay] = useState('');
   const [financeFee, setFinanceFee] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleNewJet = async (e) => {
     e.preventDefault();
@@ -23,7 +27,8 @@ const AddJetForm = () => {
     data.append('financeFee', financeFee);
     data.append('image', image);
     const res = await addNewJet(data);
-    console.log(res);
+    dispatch(addJet(res.jet));
+    console.log(res.jet, 'test');
   };
 
   return (
