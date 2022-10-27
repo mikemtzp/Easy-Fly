@@ -43,6 +43,7 @@ function Main() {
               description={data.description}
               image={data.image}
               key={data.id}
+              id={data.id}
             />
           ))}
         </Slider>
