@@ -2,32 +2,24 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Container from '@mui/material/Grid';
 import { Box } from '@mui/material';
-// import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import MyReservationCard from '../../components/myReservation/MyReservationCard';
 import './myReservation.scss';
 
 function MyReservation() {
-  const myReservations = useSelector((state) => state.myReservations);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (!myReservations.length) {
-  //     dispatch(getMyReservations());
-  //   }
-  // }, []);
+  const { reservations } = useSelector((state) => state.reservations);
 
   return (
     <Container className="myReservation-container">
       <h1>My reservations Page</h1>
       <section>
-        {myReservations.map((reservation) => (
-          <Box key={reservation.res_id} className="myReservationCard-container">
+        {reservations.map((reservation) => (
+          <Box key={reservation.created_at} className="myReservationCard-container">
             <MyReservationCard
               city={reservation.city}
               startingDay={reservation.starting_day}
               finishDay={reservation.finish_day}
               jetId={reservation.jet_id}
-              reservationId={reservation.res_id}
+              reservationId={reservation.id}
             />
           </Box>
         ))}
