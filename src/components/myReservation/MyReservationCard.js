@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
 import deleteReservation from '../../redux/myReservations/cancelReservationAPI';
@@ -11,6 +11,7 @@ function MyReservationCard(props) {
     city, startingDay, finishDay, jetId, reservationId,
   } = props;
 
+  const jets = useSelector((state) => state.jets.jets);
   const reservation = { id: reservationId };
   const dispatch = useDispatch();
 
@@ -34,8 +35,8 @@ function MyReservationCard(props) {
         {finishDay}
       </Box>
       <Box>
-        <span>Your Jet: ID-</span>
-        {jetId}
+        <span>You are renting: </span>
+        {jets.map((jet) => (jet.id === jetId ? jet.name : null))}
       </Box>
       <Button variant="contained" color="primary" onClick={() => handleCancel()}>
         Cancel Jet
