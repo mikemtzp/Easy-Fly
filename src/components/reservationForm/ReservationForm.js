@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import postReservation from '../../redux/reservation/reservationAPI';
+import { postReservation } from '../../redux/reservation/reservationAPI';
 import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import 'react-datepicker/dist/react-datepicker.css';
 import './reservatioForm.scss';

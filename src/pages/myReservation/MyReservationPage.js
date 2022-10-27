@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Container from '@mui/material/Grid';
 import { Box } from '@mui/material';
-import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
+// import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
 import MyReservationCard from '../../components/myReservation/MyReservationCard';
 import './myReservation.scss';
 
 function MyReservation() {
   const myReservations = useSelector((state) => state.myReservations);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!myReservations.length) {
-      dispatch(getMyReservations());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!myReservations.length) {
+  //     dispatch(getMyReservations());
+  //   }
+  // }, []);
 
   return (
     <Container className="myReservation-container">

@@ -9,6 +9,7 @@ import SignupForm from './components/user/SignupForm';
 import LoginForm from './components/user/LoginForm';
 import AddJet from './pages/addjet/AddJet';
 import { getJetsThunk } from './redux/jets/jetSlice';
+import { getReservationsThunk } from './redux/reservation/reservationSlice';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getJetsThunk());
+    dispatch(getReservationsThunk());
   }, [dispatch]);
 
   return (
