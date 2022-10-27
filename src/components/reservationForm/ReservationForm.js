@@ -12,8 +12,9 @@ function ReservationForm() {
 
   const [jetState, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
-  const [finishDate, setFinishDate] = useState('');
+  const [finishDate, setFinishDate] = useState(new Date());
   const [cityOrigin, setCity] = useState('');
+  const [totalPrice, setTotalPrice] = useState(0);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,21 +51,28 @@ function ReservationForm() {
     setFinishDate(date);
   };
 
+  const calculatePrice = () => {
+    const differenceMillisenconds = finishDate.getTime() - startDate.getTime();
+    const days = (Math.ceil(differenceMillisenconds / (1000 * 60 * 60 * 24)));
+    const getJet = jets.filter((jet) => (jet.id === jetState))[0];
+    setTotalPrice(((getJet.price_per_day * days) + getJet.finance_fee));
+  };
+
   return (
     <>
       {message ? (
         <div>{message}</div>
       ) : null}
       <form onSubmit={handleForm} className="reservation-form">
-        {/* jet input */}
+
         <label htmlFor="jet-select" className="select-container">
           <div>Select a jet</div>
           <select id="jet-select" value={jetState} onChange={(e) => handleJet(e)}>
             {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
           </select>
         </label>
+
         <div className="date-container">
-          {/* starting date */}
           <div className="date-select">
             <p>Select a starting date</p>
             <div className="date-comp">
@@ -72,17 +80,22 @@ function ReservationForm() {
                 id="startDate"
                 selected={startDate}
                 onChange={(date) => handleStartDate(date)}
+                minDate={new Date()}
               />
             </div>
           </div>
-          {/* finish date */}
+
           <div className="date-select">
             <p>Select finish date</p>
-            <DatePicker
-              id="finishDate"
-              selected={finishDate}
-              onChange={(date) => handleFinishDate(date)}
-            />
+            <div className="date-comp">
+              <DatePicker
+                id="finishDate"
+                selected={finishDate}
+                onChange={(date) => handleFinishDate(date)}
+                onCalendarClose={calculatePrice}
+                minDate={startDate}
+              />
+            </div>
           </div>
         </div>
         <label htmlFor="city" className="city-label">
@@ -94,6 +107,10 @@ function ReservationForm() {
             onChange={(e) => setCity(e.target.value)}
           />
         </label>
+        <div>
+          <span>Total price: </span>
+          {totalPrice}
+        </div>
 
         <button type="submit">Reserve</button>
       </form>
