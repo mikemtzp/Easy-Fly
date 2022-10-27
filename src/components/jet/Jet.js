@@ -12,8 +12,14 @@ function MainJet(props) {
 
   return (
     <div className="jet-container">
-      <div className="image-container">
-        <img src={image} alt="Jet" />
+      <div>
+        <img
+          src={image}
+          alt={name}
+          className="jet-image"
+          height="150px"
+          width="250px"
+        />
       </div>
       <div>
         <h2>{name}</h2>

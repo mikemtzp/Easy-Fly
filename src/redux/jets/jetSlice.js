@@ -11,6 +11,11 @@ const jetSlice = createSlice({
   initialState: {
     jets: [],
   },
+  reducers: {
+    addJet: (state, action) => {
+      state.jets.push(action.payload);
+    },
+  },
   extraReducers: {
     [getJetsThunk.pending]: (state) => ({
       ...state,
@@ -27,5 +32,5 @@ const jetSlice = createSlice({
     }),
   },
 });
-
+export const { addJet } = jetSlice.actions;
 export default jetSlice.reducer;

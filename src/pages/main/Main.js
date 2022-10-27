@@ -1,27 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import LeftArrow from '../../components/arrows/LeftArrow';
 import Jet from '../../components/jet/Jet';
 import './main.scss';
-import { getJetsThunk } from '../../redux/jets/jetSlice';
 import RightArrow from '../../components/arrows/RightArrow';
 
 function Main() {
-  // const { jets } = useSelector((state) => state.jets);
-  const jets = useSelector((state) => state.jets.jets);
-  const dispatch = useDispatch();
+  const { jets } = useSelector((state) => state.jets);
 
-  useEffect(() => {
-    if (!jets.length) {
-      dispatch(getJetsThunk());
-    }
-  });
-
-  const settings = {
+  const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -58,13 +49,13 @@ function Main() {
         <p>Please select a Jet Model</p>
       </div>
       <ul className="home__card-container">
-        <Slider {...settings}>
-          {jets.map((jet) => (
+        <Slider {...sliderSettings}>
+          {jets.map((data) => (
             <Jet
-              name={jet.name}
-              description={jet.description}
-              image={jet.image}
-              key={jet.id}
+              name={data.name}
+              description={data.description}
+              image={data.image}
+              key={data.id}
             />
           ))}
         </Slider>
