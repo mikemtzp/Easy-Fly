@@ -10,7 +10,7 @@ function Jet(props) {
   } = props;
 
   return (
-    <div className="jet-container" id={id}>
+    <div className="jet-container">
       <Link to={`/jets/${id}`}>
         <div>
           <img
