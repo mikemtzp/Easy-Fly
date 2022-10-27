@@ -3,6 +3,7 @@ import api from '../../config';
 
 // Action
 const GETRESERVATIONS = 'http://localhost:3000/api/v1/reservations/GET_MYRESERVATIONS';
+const CANCELRESERVATION = 'http://localhost:3000/api/v1/reservations/CANCEL_RESERVATION';
 
 // Action Creator
 export const getMyReservations = () => async (dispatch) => {
@@ -25,11 +26,18 @@ export const getMyReservations = () => async (dispatch) => {
   });
 };
 
+export const cancelReservationReducer = (id) => ({
+  type: CANCELRESERVATION,
+  payload: id,
+});
+
 // Reducer
 export default function myReservationsReducer(state = [], action) {
   switch (action.type) {
     case GETRESERVATIONS:
       return action.payload;
+    case CANCELRESERVATION:
+      return [...state.filter((reservation) => reservation.res_id !== action.payload)];
     default:
       return state;
   }

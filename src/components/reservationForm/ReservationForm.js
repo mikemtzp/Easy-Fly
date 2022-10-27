@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import postReservation from '../../redux/reservation/reservationAPI';
@@ -8,25 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './reservatioForm.scss';
 
 function ReservationForm() {
-  // Simulates jets state:
-  const jets = [
-    {
-      jet_id: 1,
-      jet_name: 'Jet-1',
-    },
-    {
-      jet_id: 2,
-      jet_name: 'Jet-2',
-    },
-    {
-      jet_id: 3,
-      jet_name: 'Jet-3',
-    },
-    {
-      jet_id: 4,
-      jet_name: 'Jet-4',
-    },
-  ];
+  const jets = useSelector((state) => state.jets.jets);
 
   const [jetState, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
@@ -44,7 +26,7 @@ function ReservationForm() {
     e.preventDefault();
     if (jetState === '' || finishDate === '' || cityOrigin === '') {
       setMessage('Fill all  the parameters!');
-    } if (startDate.getTime() > finishDate.getTime()) {
+    } else if (startDate.getTime() > finishDate.getTime()) {
       setMessage('Start date cant be in advance of the finish date');
     } else {
       const reservation = {
@@ -78,7 +60,7 @@ function ReservationForm() {
         <label htmlFor="jet-select" className="select-container">
           <div>Select a jet</div>
           <select id="jet-select" value={jetState} onChange={(e) => handleJet(e)}>
-            {jets.map((jet) => <option key={`jet-${jet.jet_id}`} value={jet.jet_id}>{jet.jet_name}</option>)}
+            {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
           </select>
         </label>
         <div className="date-container">

@@ -14,8 +14,7 @@ function MyReservation() {
     if (!myReservations.length) {
       dispatch(getMyReservations());
     }
-    // console.log(myReservations[0].res_id);
-  });
+  }, []);
 
   return (
     <Container className="myReservation-container">

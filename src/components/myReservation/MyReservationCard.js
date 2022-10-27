@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
 import deleteReservation from '../../redux/myReservations/cancelReservationAPI';
-import { getMyReservations } from '../../redux/myReservations/myReservationsReducer';
+import { cancelReservationReducer } from '../../redux/myReservations/myReservationsReducer';
 import './myReservationCard.scss';
 
 function MyReservationCard(props) {
@@ -15,8 +15,8 @@ function MyReservationCard(props) {
   const dispatch = useDispatch();
 
   const handleCancel = () => {
+    dispatch(cancelReservationReducer(reservation.id));
     deleteReservation(reservation);
-    dispatch(getMyReservations());
   };
 
   return (
