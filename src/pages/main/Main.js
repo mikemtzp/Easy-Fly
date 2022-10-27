@@ -1,20 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Jet from '../../components/jet/Jet';
 import './main.scss';
-import { getJetsThunk } from '../../redux/jets/jetSlice';
 
 function Main() {
   const { jets } = useSelector((state) => state.jets);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getJetsThunk());
-  }, [dispatch]);
 
   const sliderSettings = {
     dots: true,
@@ -47,6 +41,7 @@ function Main() {
             <Jet
               name={data.name}
               description={data.description}
+              image={data.image}
               key={data.id}
             />
           ))}
