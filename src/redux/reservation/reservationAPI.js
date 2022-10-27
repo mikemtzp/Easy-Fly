@@ -19,3 +19,12 @@ export const getReservations = async () => {
     throw new Error('err');
   }
 };
+
+export const deleteReservation = async (reservation) => {
+  try {
+    const res = await axios.delete(`${api}/del_reservation`, { params: reservation });
+    return res;
+  } catch (err) {
+    throw new Error(err);
+  }
+};

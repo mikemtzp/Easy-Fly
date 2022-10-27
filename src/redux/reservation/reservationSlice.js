@@ -13,7 +13,7 @@ const reservationSlice = createSlice({
   },
   reducers: {
     cancelReservation: (state, action) => {
-      state.filter((reservation) => reservation.id !== action.payload);
+      state.reservations.filter((res) => (res.id !== action.payload));
     },
     addReservation: (state, action) => {
       state.reservations.push(action.payload);

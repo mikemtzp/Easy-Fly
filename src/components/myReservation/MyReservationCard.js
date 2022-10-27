@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
-import deleteReservation from '../../redux/myReservations/cancelReservationAPI';
-import { cancelReservationReducer } from '../../redux/myReservations/myReservationsReducer';
+import { deleteReservation } from '../../redux/reservation/reservationAPI';
+import { getReservationsThunk } from '../../redux/reservation/reservationSlice';
 import './myReservationCard.scss';
 
 function MyReservationCard(props) {
@@ -11,13 +11,13 @@ function MyReservationCard(props) {
     city, startingDay, finishDay, jetId, reservationId,
   } = props;
 
-  const jets = useSelector((state) => state.jets.jets);
+  const { jets } = useSelector((state) => state.jets);
   const reservation = { id: reservationId };
   const dispatch = useDispatch();
 
-  const handleCancel = () => {
-    dispatch(cancelReservationReducer(reservation.id));
-    deleteReservation(reservation);
+  const handleCancel = async () => {
+    await deleteReservation(reservation);
+    dispatch(getReservationsThunk());
   };
 
   return (
