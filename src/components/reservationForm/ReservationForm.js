@@ -9,7 +9,7 @@ import { addReservation } from '../../redux/reservation/reservationSlice';
 
 function ReservationForm() {
   const { jets } = useSelector((state) => state.jets);
-  const [jetState, setJet] = useState(jets[0].id);
+  const [jetState, setJet] = useState(jets[0]);
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState(new Date());
   const [cityOrigin, setCity] = useState('');
@@ -18,6 +18,8 @@ function ReservationForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { state } = useLocation();
+
+  console.log(jetState);
 
   const handleJet = (jet) => {
     setJet(parseInt(jet.target.value, 10));
@@ -55,8 +57,15 @@ function ReservationForm() {
   const calculatePrice = () => {
     const differenceMillisenconds = finishDate.getTime() - startDate.getTime();
     const days = (Math.ceil(differenceMillisenconds / (1000 * 60 * 60 * 24)));
-    const getJet = jets.filter((jet) => (jet.id === jetState))[0];
-    setTotalPrice(((getJet.price_per_day * days) + getJet.finance_fee));
+    if (typeof jetState === 'object') {
+      console.log(jetState);
+      const getJet = jets.filter((jet) => (jet.id === jetState.id))[0];
+      setTotalPrice(((getJet.price_per_day * days) + getJet.finance_fee));
+    } else {
+      console.log(jetState);
+      const getJet = jets.filter((jet) => (jet.id === jetState))[0];
+      setTotalPrice(((getJet.price_per_day * days) + getJet.finance_fee));
+    }
   };
 
   return (
