@@ -36,7 +36,7 @@ const SidebarData = [
   },
   {
     title: 'Delete Jet',
-    path: '/deletejet',
+    path: '/delete-jet',
     icon: <MdIcons.MdAirplanemodeInactive />,
     cName: 'nav-text',
     key: 'deleteJet',
