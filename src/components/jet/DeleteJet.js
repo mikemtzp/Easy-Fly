@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { deleteJet } from '../../redux/jets/jetAPI';
 import { getJetsThunk } from '../../redux/jets/jetSlice';
@@ -9,6 +10,7 @@ function DeleteJet(props) {
     name, description, image, id,
   } = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDelete = async (e, jetId) => {
     e.preventDefault();
@@ -16,15 +18,15 @@ function DeleteJet(props) {
     const jet = { id: jetId };
     await deleteJet(jet);
     dispatch(getJetsThunk());
+    navigate('/');
   };
 
   return (
-    <div className="jet-container">
+    <div>
       <div>
         <img
           src={image}
           alt={name}
-          className="jet-image"
           height="150px"
           width="250px"
         />
@@ -33,7 +35,7 @@ function DeleteJet(props) {
         <h2>{name}</h2>
         <p>{description}</p>
       </div>
-      <div className="social-container">
+      <div>
         <button type="button" onClick={(e) => handleDelete(e, id)}>Delete</button>
       </div>
     </div>
