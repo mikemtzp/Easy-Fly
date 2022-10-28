@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 85%;
+  padding: 0 5rem;
 
   &__title {
     margin-bottom: 5rem;
@@ -19,13 +20,17 @@
 
       .slick-arrow {
         &.slick-prev {
-          left: -3rem;
-          background-color: red;
+          left: -6rem;
+          background-color: #97bf11;
+          border-top-right-radius: 50%;
+          border-bottom-right-radius: 50%;
         }
 
         &.slick-next {
-          right: -3rem;
-          background-color: red;
+          right: -6rem;
+          background-color: #97bf11;
+          border-top-left-radius: 50%;
+          border-bottom-left-radius: 50%;
         }
       }
     }
