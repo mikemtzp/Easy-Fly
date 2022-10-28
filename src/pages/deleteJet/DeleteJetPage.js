@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import DeleteJet from '../../components/jet/DeleteJet';
+import Nav from '../../components/nav/Nav';
 
 function DeleteJetPage() {
   const { jets } = useSelector((state) => state.jets);
 
   return (
-    <>
+    <Nav>
       <h1>Delete Jet Page</h1>
       {jets.map((jet) => (
         <DeleteJet
@@ -17,7 +18,7 @@ function DeleteJetPage() {
           key={jet.id}
         />
       ))}
-    </>
+    </Nav>
   );
 }
 
