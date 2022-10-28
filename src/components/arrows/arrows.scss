@@ -1,15 +1,20 @@
 .button-left {
+  left: -50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
   padding: 3rem 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9;
 }
 
 .button-right {
+  right: -50%;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
   padding: 3rem 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9;
+  z-index: 1;
 }

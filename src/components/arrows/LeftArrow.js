@@ -11,9 +11,14 @@ function LeftArrow(props) {
 }
 
 LeftArrow.propTypes = {
-  className: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+LeftArrow.defaultProps = {
+  className: '',
+  onClick: () => 0,
 };
 
 export default LeftArrow;

@@ -18,25 +18,18 @@
     .slick-slider {
       width: 50vw;
 
-      @media only screen and (min-width: 500px) {
-        width: 75vw;
-      }
-
       .slick-arrow {
         &.slick-prev {
-          // position: absolute;
-          left: -6.5rem;
           background-color: #97bf11;
-          border-top-right-radius: 50%;
-          border-bottom-right-radius: 50%;
         }
 
         &.slick-next {
-          right: -6.5rem;
           background-color: #97bf11;
-          border-top-left-radius: 50%;
-          border-bottom-left-radius: 50%;
         }
+      }
+
+      @media only screen and (min-width: 500px) {
+        width: 75vw;
       }
     }
   }
