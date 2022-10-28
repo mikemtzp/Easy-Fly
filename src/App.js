@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Nav from './components/nav/Nav';
 import ReservationPage from './pages/reservation/ReservationPage';
 import MyReservation from './pages/myReservation/MyReservationPage';
 import Main from './pages/main/Main';
@@ -23,8 +22,6 @@ function App() {
 
   return (
     <Router>
-      <Nav />
-
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/signup" element={<SignupForm />} />
