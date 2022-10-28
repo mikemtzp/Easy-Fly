@@ -8,6 +8,7 @@ import Main from './pages/main/Main';
 import SignupForm from './components/user/SignupForm';
 import LoginForm from './components/user/LoginForm';
 import AddJet from './pages/addjet/AddJet';
+import DeleteJetPage from './pages/deleteJet/DeleteJetPage';
 import { getJetsThunk } from './redux/jets/jetSlice';
 import { getReservationsThunk } from './redux/reservation/reservationSlice';
 import './App.css';
@@ -31,6 +32,7 @@ function App() {
         <Route path="/reservation" element={<ReservationPage />} />
         <Route path="/myreservations" element={<MyReservation />} />
         <Route path="/add-jet" element={<AddJet />} />
+        <Route path="/delete-jet" element={<DeleteJetPage />} />
       </Routes>
     </Router>
   );
