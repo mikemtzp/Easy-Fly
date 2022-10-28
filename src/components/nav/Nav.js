@@ -71,7 +71,9 @@ function Nav({ children }) {
         <div className="desktop-container">
           <div className="sidebar">
             <div className="logo">
-              <Link to="/">EasyFly</Link>
+              <Link to="/" className="logo-link">
+                EasyFly
+              </Link>
             </div>
             <ul className="item-container">
               {SidebarData.map((item) => {
