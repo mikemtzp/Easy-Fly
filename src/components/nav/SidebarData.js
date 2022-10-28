@@ -22,7 +22,7 @@ const SidebarData = [
   },
   {
     title: 'My Reservations',
-    path: '/myreserv',
+    path: '/myreservations',
     icon: <IoIcons.IoBookOutline />,
     cName: 'nav-text',
     key: 'myReserv',
