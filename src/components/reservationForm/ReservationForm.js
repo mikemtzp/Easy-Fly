@@ -100,7 +100,7 @@ function ReservationForm() {
                 value={state.id}
                 onChange={(value) => {
                   handleJet(value);
-                  // calculatePrice(e);
+                  calculatePrice();
                 }}
               >
                 {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
