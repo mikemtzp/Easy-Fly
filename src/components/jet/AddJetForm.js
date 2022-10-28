@@ -28,7 +28,6 @@ const AddJetForm = () => {
     data.append('image', image);
     const res = await addNewJet(data);
     dispatch(addJet(res.jet));
-    console.log(res.jet, 'test');
   };
 
   return (

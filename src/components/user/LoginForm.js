@@ -18,8 +18,6 @@ const LoginFrom = () => {
     if (res.status === 200) {
       localStorage.setItem('token', res.data.token);
       navigate('/');
-      console.log(res.data.token);
-      console.log(res.data.id);
     }
   };
 

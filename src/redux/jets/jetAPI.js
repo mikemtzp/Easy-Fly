@@ -20,3 +20,12 @@ export const getJets = async () => {
     throw new Error('err');
   }
 };
+
+export const deleteJet = async (jet) => {
+  try {
+    const response = await axios.delete(`${api}/delete-jet`, { params: jet });
+    return response;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
