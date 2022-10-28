@@ -30,7 +30,7 @@ function Nav() {
 
   return (
     <>
-      {windowSize.innerWidth <= 390 ? (
+      {windowSize.innerWidth <= 500 ? (
         <>
           <div className="navbar">
             <FaIcons.FaBars onClick={showSideBar} className={!sidebar ? 'menu-bars' : 'hide'} />

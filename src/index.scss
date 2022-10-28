@@ -46,5 +46,7 @@ code {
 ul { list-style: none; }
 
 #root {
-  display: flex;
+  @media only screen and (min-width: 500px) {
+    display: flex; 
+  }
 }
