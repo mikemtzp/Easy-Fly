@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
@@ -8,16 +8,20 @@ import './reservatioForm.scss';
 import { addReservation } from '../../redux/reservation/reservationSlice';
 
 function ReservationForm() {
-  const { jets } = useSelector((state) => state.jets);
-  const [jetState, setJet] = useState(jets[0]);
+  const [jetState, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState(new Date());
   const [cityOrigin, setCity] = useState('');
-  const [totalPrice, setTotalPrice] = useState(0);
+  // const [totalPrice, setTotalPrice] = useState(0);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { state } = useLocation();
+  const { jets } = useSelector((state) => state.jets);
+
+  useEffect(() => {
+    setJet(jets[0]);
+  }, [jets]);
 
   console.log(jetState);
 
@@ -32,6 +36,16 @@ function ReservationForm() {
       setMessage('Fill all  the parameters!');
     } else if (startDate.getTime() > finishDate.getTime()) {
       setMessage('Start date cant be in advance of the finish date');
+    } else if (typeof jetState === 'object') {
+      const reservation = {
+        jet_id: jetState.id,
+        starting_day: startDate.toDateString(),
+        finish_day: finishDate.toDateString(),
+        city: cityOrigin,
+      };
+      const newReservation = await postReservation(reservation);
+      dispatch(addReservation(newReservation.reservation));
+      navigate('/myreservations');
     } else {
       const reservation = {
         jet_id: jetState,
@@ -55,17 +69,7 @@ function ReservationForm() {
   };
 
   const calculatePrice = () => {
-    const differenceMillisenconds = finishDate.getTime() - startDate.getTime();
-    const days = (Math.ceil(differenceMillisenconds / (1000 * 60 * 60 * 24)));
-    if (typeof jetState === 'object') {
-      console.log(jetState);
-      const getJet = jets.filter((jet) => (jet.id === jetState.id))[0];
-      setTotalPrice(((getJet.price_per_day * days) + getJet.finance_fee));
-    } else {
-      console.log(jetState);
-      const getJet = jets.filter((jet) => (jet.id === jetState))[0];
-      setTotalPrice(((getJet.price_per_day * days) + getJet.finance_fee));
-    }
+    console.log(jetState);
   };
 
   return (
@@ -84,7 +88,7 @@ function ReservationForm() {
                 defaultValue={state.id}
                 onChange={(e) => {
                   handleJet(e);
-                  calculatePrice(e);
+                  // calculatePrice(e);
                 }}
               >
                 {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
@@ -93,10 +97,10 @@ function ReservationForm() {
             : (
               <select
                 id="jet-select"
-                value={jetState}
+                defaultValue={jetState}
                 onChange={(e) => {
                   handleJet(e);
-                  calculatePrice(e);
+                  calculatePrice();
                 }}
               >
                 {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
@@ -123,7 +127,7 @@ function ReservationForm() {
                 id="finishDate"
                 selected={finishDate}
                 onChange={(date) => handleFinishDate(date)}
-                onCalendarClose={calculatePrice}
+                onCalendarClose={calculatePrice()}
                 minDate={startDate}
               />
             </div>
@@ -140,7 +144,7 @@ function ReservationForm() {
         </label>
         <div>
           <span>Total price: </span>
-          {totalPrice}
+          {/* {totalPrice} */}
         </div>
 
         <button type="submit">Reserve</button>
