@@ -12,7 +12,8 @@ function ReservationForm() {
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState(new Date());
   const [cityOrigin, setCity] = useState('');
-  // const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [days, setDays] = useState(0);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,9 +22,10 @@ function ReservationForm() {
 
   useEffect(() => {
     setJet(jets[0]);
+    if (state) {
+      setJet(state.id);
+    }
   }, [jets]);
-
-  console.log(jetState);
 
   const handleJet = (jet) => {
     setJet(parseInt(jet.target.value, 10));
@@ -69,7 +71,17 @@ function ReservationForm() {
   };
 
   const calculatePrice = () => {
-    console.log(jetState);
+    const diffMilliseconds = finishDate.getTime() - startDate.getTime();
+    const days = Math.ceil(diffMilliseconds / (1000 * 60 * 60 * 24));
+    setDays(days);
+    if (typeof jetState === 'object') {
+      const price = (jetState.price_per_day * days) + jetState.finance_fee;
+      setTotalPrice(price);
+    } else {
+      const jet = jets.filter((j) => j.id === jetState)[0];
+      const price = (jet.price_per_day * days) + jet.finance_fee;
+      setTotalPrice(price);
+    }
   };
 
   return (
@@ -85,9 +97,9 @@ function ReservationForm() {
             ? (
               <select
                 id="jet-select"
-                defaultValue={state.id}
-                onChange={(e) => {
-                  handleJet(e);
+                value={state.id}
+                onChange={(value) => {
+                  handleJet(value);
                   // calculatePrice(e);
                 }}
               >
@@ -127,7 +139,7 @@ function ReservationForm() {
                 id="finishDate"
                 selected={finishDate}
                 onChange={(date) => handleFinishDate(date)}
-                onCalendarClose={calculatePrice()}
+                onCalendarClose={calculatePrice}
                 minDate={startDate}
               />
             </div>
@@ -143,8 +155,10 @@ function ReservationForm() {
           />
         </label>
         <div>
+          <span>Total days: </span>
+          {days}
           <span>Total price: </span>
-          {/* {totalPrice} */}
+          {totalPrice}
         </div>
 
         <button type="submit">Reserve</button>
