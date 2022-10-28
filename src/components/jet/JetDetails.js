@@ -1,12 +1,10 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function JetDetails() {
   const { jets } = useSelector((state) => state.jets);
   const { id } = useParams();
-
   const idToNum = parseInt(id, 10);
   const jet = jets.filter((jet) => jet.id === idToNum)[0];
 
@@ -20,10 +18,9 @@ function JetDetails() {
         <p>{jet.finance_fee}</p>
         <p>{jet.price_per_day}</p>
       </div>
+      <Link to="/reservation" state={jet}>Reserve</Link>
     </section>
   );
 }
-
-JetDetails.propTypes = {};
 
 export default JetDetails;

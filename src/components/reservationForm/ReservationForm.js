@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { postReservation } from '../../redux/reservation/reservationAPI';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -17,6 +17,7 @@ function ReservationForm() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { state } = useLocation();
 
   const handleJet = (jet) => {
     setJet(parseInt(jet.target.value, 10));
@@ -67,18 +68,32 @@ function ReservationForm() {
 
         <label htmlFor="jet-select" className="select-container">
           <div>Select a jet</div>
-          <select
-            id="jet-select"
-            value={jetState}
-            onChange={(e) => {
-              handleJet(e);
-              calculatePrice();
-            }}
-          >
-            {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
-          </select>
+          {state
+            ? (
+              <select
+                id="jet-select"
+                defaultValue={state.id}
+                onChange={(e) => {
+                  handleJet(e);
+                  calculatePrice(e);
+                }}
+              >
+                {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
+              </select>
+            )
+            : (
+              <select
+                id="jet-select"
+                value={jetState}
+                onChange={(e) => {
+                  handleJet(e);
+                  calculatePrice(e);
+                }}
+              >
+                {jets.map((jet) => <option key={`jet-${jet.id}`} value={jet.id}>{jet.name}</option>)}
+              </select>
+            )}
         </label>
-
         <div className="date-container">
           <div className="date-select">
             <p>Select a starting date</p>
