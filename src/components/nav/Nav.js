@@ -89,7 +89,7 @@ function Nav({ children }) {
                       activeClassName="link active"
                     >
                       {icon}
-                      <span>{title}</span>
+                      <span className="title">{title}</span>
                     </NavLink>
                   </li>
                 );
