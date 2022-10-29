@@ -38,13 +38,11 @@ function Jet(props) {
             </IconContext.Provider>
           </div>
           <div className="icon-container">
-            <IconContext.Provider value={{ size: '1rem' }}>
-              <FaIcons.FaInstagramSquare />
-            </IconContext.Provider>
+            <FaIcons.FaInstagramSquare />
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
