@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import ReservationPage from './pages/reservation/ReservationPage';
 import MyReservation from './pages/myReservation/MyReservationPage';
 import Main from './pages/main/Main';
-import SignupForm from './components/user/SignupForm';
-import LoginForm from './components/user/LoginForm';
+import SignupPage from './pages/user/SignupPage';
+import LoginPage from './pages/user/LoginPage';
 import AddJet from './pages/addjet/AddJet';
 import JetDetailsPage from './pages/jetdetails/JetDetailsPage';
 import DeleteJetPage from './pages/deleteJet/DeleteJetPage';
@@ -24,8 +24,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/signup" element={<SignupForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/reservation" element={<ReservationPage />} />
         <Route path="/myreservations" element={<MyReservation />} />
         <Route path="/jets/:id" element={<JetDetailsPage />} />
