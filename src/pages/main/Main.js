@@ -8,6 +8,7 @@ import Jet from '../../components/jet/Jet';
 import './main.scss';
 import LeftArrow from '../../components/arrows/LeftArrow';
 import RightArrow from '../../components/arrows/RightArrow';
+import Nav from '../../components/nav/Nav';
 
 function Main() {
   const { jets } = useSelector((state) => state.jets);
@@ -43,25 +44,28 @@ function Main() {
   };
 
   return (
-    <div className="home">
-      <div className="home__title">
-        <h1>LATEST MODELS</h1>
-        <p>Please select a Jet Model</p>
-      </div>
-      <ul className="home__card-container">
-        <Slider {...sliderSettings}>
-          {jets.map((data) => (
-            <Jet
-              name={data.name}
-              description={data.description}
-              image={data.image}
-              key={data.name}
-              id={data.id}
-            />
-          ))}
-        </Slider>
-      </ul>
-    </div>
+    <>
+      <Nav>
+        <div className="home">
+          <div className="home__title">
+            <h1>LATEST MODELS</h1>
+            <p>Please select a Jet Model</p>
+          </div>
+          <ul className="home__card-container">
+            <Slider {...sliderSettings}>
+              {jets.map((data) => (
+                <Jet
+                  name={data.name}
+                  description={data.description}
+                  image={data.image}
+                  key={data.id}
+                />
+              ))}
+            </Slider>
+          </ul>
+        </div>
+      </Nav>
+    </>
   );
 }
 
