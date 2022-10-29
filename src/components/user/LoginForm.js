@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { loginApi } from '../../auth-api/AuthApi';
+import Nav from '../nav/Nav';
 
 const LoginFrom = () => {
   const [username, setUsername] = useState('');
@@ -22,7 +23,7 @@ const LoginFrom = () => {
   };
 
   return (
-    <>
+    <Nav>
       <form onSubmit={handleLogin}>
         <TextField
           variant="standard"
@@ -42,7 +43,7 @@ const LoginFrom = () => {
           Login
         </Button>
       </form>
-    </>
+    </Nav>
   );
 };
 
