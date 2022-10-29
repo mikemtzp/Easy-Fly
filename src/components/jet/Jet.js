@@ -1,49 +1,52 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-// Style
 import './Jet.scss';
-
-// Icons
 import * as FaIcons from 'react-icons/fa';
 
-function MainJet(props) {
-  const { name, description, image } = props;
+function Jet(props) {
+  const {
+    name, description, image, id,
+  } = props;
 
   return (
     <div className="jet-container">
-      <div>
-        <img
-          src={image}
-          alt={name}
-          className="jet-image"
-          height="150px"
-          width="250px"
-        />
-      </div>
-      <div>
-        <h2>{name}</h2>
-        <p>{description}</p>
-      </div>
-      <div className="social-container">
-        <div className="icon-container">
-          <FaIcons.FaFacebookF />
+      <Link to={`/jets/${id}`}>
+        <div>
+          <img
+            src={image}
+            alt={name}
+            className="jet-image"
+            height="150px"
+            width="250px"
+          />
         </div>
-        <div className="icon-container">
-          <FaIcons.FaTwitter />
+        <div>
+          <h2>{name}</h2>
+          <p>{description}</p>
         </div>
-        <div className="icon-container">
-          <FaIcons.FaInstagramSquare />
+        <div className="social-container">
+          <div className="icon-container">
+            <FaIcons.FaFacebookF />
+          </div>
+          <div className="icon-container">
+            <FaIcons.FaTwitter />
+          </div>
+          <div className="icon-container">
+            <FaIcons.FaInstagramSquare />
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
+
   );
 }
 
-MainJet.propTypes = {
+Jet.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
-export default MainJet;
+export default Jet;

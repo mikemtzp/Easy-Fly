@@ -17,8 +17,7 @@ const SignupForm = () => {
       email,
       password,
     };
-    const response = await signupApi(signupUser);
-    console.log(response);
+    await signupApi(signupUser);
   };
 
   return (
