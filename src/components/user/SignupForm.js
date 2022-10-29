@@ -1,64 +1,161 @@
-import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import * as Yup from 'yup';
+import { useState } from 'react';
+import { useFormik, Form, FormikProvider } from 'formik';
+import {
+  Stack,
+  Box,
+  TextField,
+  IconButton,
+  Button,
+  InputAdornment,
+} from '@mui/material';
+
+import { Icon } from '@iconify/react';
+import { motion } from 'framer-motion';
 import { signupApi } from '../../auth-api/AuthApi';
-import Nav from '../nav/Nav';
+
+const easing = [0.6, -0.05, 0.01, 0.99];
+const animate = {
+  opacity: 1,
+  y: 0,
+  transition: {
+    duration: 0.6,
+    ease: easing,
+    delay: 0.16,
+  },
+};
 
 const SignupForm = () => {
-  const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSignup = async (e) => {
-    e.preventDefault();
-    const signupUser = {
-      username,
-      name,
-      email,
-      password,
-    };
-    await signupApi(signupUser);
-  };
+  const SignupSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(5, 'Too Short!')
+      .max(10, 'Too Long!')
+      .required('Username required'),
+    name: Yup.string()
+      .min(5, 'Too Short!')
+      .max(20, 'Too Long!')
+      .required('Name required'),
+    email: Yup.string()
+      .email('Email must be a valid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .min(6, 'Too Short!')
+      .max(10, 'Too Long!')
+      .required('Password is required'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      name: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: SignupSchema,
+    onSubmit: async (values) => {
+      await signupApi(values);
+    },
+  });
+
+  const {
+    errors, touched, handleSubmit, isSubmitting, getFieldProps,
+  } = formik;
 
   return (
-    <Nav>
-      <section>
-        <form onSubmit={handleSignup}>
-          <TextField
-            variant="outlined"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-          />
-          <TextField
-            variant="outlined"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-          />
-          <TextField
-            variant="outlined"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-          />
-          <TextField
-            variant="outlined"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Set your password"
-          />
+    <section>
+      <FormikProvider value={formik}>
+        <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+          <Stack spacing={3}>
+            <Stack
+              component={motion.div}
+              initial={{ opacity: 0, y: 60 }}
+              animate={animate}
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={2}
+            >
+              <TextField
+                fullWidth
+                label="Username"
+                {...getFieldProps('username')}
+                error={Boolean(touched.username && errors.username)}
+                helperText={touched.username && errors.username}
+              />
 
-          <Button variant="contained" color="primary" type="submit">
-            Signup
-          </Button>
-        </form>
-      </section>
-    </Nav>
+              <TextField
+                fullWidth
+                label="Name"
+                {...getFieldProps('name')}
+                error={Boolean(touched.name && errors.name)}
+                helperText={touched.name && errors.name}
+              />
+            </Stack>
+
+            <Stack
+              spacing={3}
+              component={motion.div}
+              initial={{ opacity: 0, y: 40 }}
+              animate={animate}
+            >
+              <TextField
+                fullWidth
+                autoComplete="email"
+                type="email"
+                label="Email address"
+                {...getFieldProps('email')}
+                error={Boolean(touched.email && errors.email)}
+                helperText={touched.email && errors.email}
+              />
+
+              <TextField
+                fullWidth
+                autoComplete="current-password"
+                type={showPassword ? 'text' : 'password'}
+                label="Password"
+                {...getFieldProps('password')}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        edge="end"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                      >
+                        <Icon
+                          icon={
+                            showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'
+                          }
+                        />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                error={Boolean(touched.password && errors.password)}
+                helperText={touched.password && errors.password}
+              />
+            </Stack>
+
+            <Box
+              component={motion.div}
+              initial={{ opacity: 0, y: 20 }}
+              animate={animate}
+            >
+              <Button
+                fullWidth
+                sx={{ mt: 5, fontSize: 15 }}
+                size="large"
+                type="submit"
+                color="success"
+                variant="contained"
+                loading={isSubmitting}
+              >
+                Sign up
+              </Button>
+            </Box>
+          </Stack>
+        </Form>
+      </FormikProvider>
+    </section>
   );
 };
 
