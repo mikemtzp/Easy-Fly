@@ -12,8 +12,8 @@ function Jet(props) {
   } = props;
 
   return (
-    <Link to={`/jets/${id}`}>
-      <div className="jet-container">
+    <div className="jet-container">
+      <Link to={`/jets/${id}`}>
         <div className="image-container">
           <img
             src={image}
@@ -38,7 +38,9 @@ function Jet(props) {
             </IconContext.Provider>
           </div>
           <div className="icon-container">
-            <FaIcons.FaInstagramSquare />
+            <IconContext.Provider value={{ size: '1rem' }}>
+              <FaIcons.FaInstagramSquare />
+            </IconContext.Provider>
           </div>
         </div>
       </Link>

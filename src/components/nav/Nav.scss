@@ -88,8 +88,6 @@
 //desktop
 .desktop-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
 }
 
@@ -143,4 +141,20 @@
   .desktop-ba {
     padding: 2rem 0 0 1.5rem;
   }
+}
+
+.mobile-container {
+  flex: 1;
+
+  .home {
+    justify-content: flex-start;
+
+    &__card-container {
+      @media only screen and (min-width: 500px) {
+        .slick-slider {
+          width: 75vw;
+        }
+      }
+    }
+    }
 }
