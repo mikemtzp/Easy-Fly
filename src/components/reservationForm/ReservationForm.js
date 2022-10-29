@@ -25,7 +25,7 @@ function ReservationForm() {
     if (state) {
       setJet(state.id);
     }
-  }, [jets]);
+  }, [jets, state]);
 
   const handleJet = (jet) => {
     setJet(parseInt(jet.target.value, 10));

@@ -86,7 +86,7 @@ function Nav({ children }) {
                       end
                       to={path}
                       className="link"
-                      activeClassName="link active"
+                      activeclassname="link active"
                     >
                       {icon}
                       <span className="title">{title}</span>
