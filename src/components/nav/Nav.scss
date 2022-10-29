@@ -1,5 +1,6 @@
 .main {
   z-index: 1;
+  margin: auto;
 }
 
 .navbar {
@@ -87,7 +88,7 @@
 //desktop
 .desktop-container {
   display: flex;
-  column-gap: 2px;
+  column-gap: 2rem;
 }
 
 .desk-nav {

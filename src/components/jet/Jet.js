@@ -38,7 +38,6 @@ function Jet(props) {
         </div>
       </Link>
     </div>
-
   );
 }
 

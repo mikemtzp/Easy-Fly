@@ -10,7 +10,11 @@ function JetDetails() {
 
   return (
     <section className="details-container">
-      <img src={jet.image} alt={jet.name} className="details-container__image" />
+      <img
+        src={jet.image}
+        alt={jet.name}
+        className="details-container__image"
+      />
       <div className="details-container__info">
         <h1>{jet.name}</h1>
         <p>{jet.category}</p>
@@ -18,7 +22,9 @@ function JetDetails() {
         <p>{jet.finance_fee}</p>
         <p>{jet.price_per_day}</p>
       </div>
-      <Link to="/reservation" state={jet}>Reserve</Link>
+      <Link to="/reservation" state={jet}>
+        Reserve
+      </Link>
     </section>
   );
 }
