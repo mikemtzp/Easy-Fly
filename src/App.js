@@ -8,6 +8,7 @@ import Main from './pages/main/Main';
 import SignupForm from './components/user/SignupForm';
 import LoginForm from './components/user/LoginForm';
 import AddJet from './pages/addjet/AddJet';
+import JetDetailsPage from './pages/jetdetails/JetDetailsPage';
 import DeleteJetPage from './pages/deleteJet/DeleteJetPage';
 import { getJetsThunk } from './redux/jets/jetSlice';
 import { getReservationsThunk } from './redux/reservation/reservationSlice';
@@ -24,15 +25,15 @@ function App() {
   return (
     <Router>
       <Nav />
-
       <Routes>
-        <Route path="/" element={<Main />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/reservation" element={<ReservationPage />} />
         <Route path="/myreservations" element={<MyReservation />} />
+        <Route path="/jets/:id" element={<JetDetailsPage />} />
         <Route path="/add-jet" element={<AddJet />} />
         <Route path="/delete-jet" element={<DeleteJetPage />} />
+        <Route index path="/" element={<Main />} />
       </Routes>
     </Router>
   );

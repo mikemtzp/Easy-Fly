@@ -55,7 +55,8 @@ function Main() {
               name={data.name}
               description={data.description}
               image={data.image}
-              key={data.id}
+              key={data.name}
+              id={data.id}
             />
           ))}
         </Slider>
