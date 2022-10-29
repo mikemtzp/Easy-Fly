@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { motion } from 'framer-motion';
@@ -82,13 +82,14 @@ function Nav({ children }) {
                 } = item;
                 return (
                   <li key={key} className="desktop-ba">
-                    <Link to={path} className="link">
-                      <div className="icon">{icon}</div>
-                      <div className="link-text">
-                        {title}
-                        {' '}
-                      </div>
-                    </Link>
+                    <NavLink
+                      to={path}
+                      className="link"
+                      activeClassName="link active"
+                    >
+                      {icon}
+                      <span>{title}</span>
+                    </NavLink>
                   </li>
                 );
               })}
