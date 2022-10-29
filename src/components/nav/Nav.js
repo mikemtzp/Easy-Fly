@@ -83,6 +83,7 @@ function Nav({ children }) {
                 return (
                   <li key={key} className="desktop-ba">
                     <NavLink
+                      end
                       to={path}
                       className="link"
                       activeClassName="link active"
