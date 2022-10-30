@@ -12,6 +12,7 @@ import {
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 import { loginApi } from '../../auth-api/AuthApi';
+import LocalStorage from '../../app/LocalStorage';
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const animate = {
@@ -23,6 +24,8 @@ const animate = {
     delay: 0.16,
   },
 };
+
+const storage = new LocalStorage();
 
 const LoginFrom = () => {
   const navigate = useNavigate();
@@ -41,7 +44,7 @@ const LoginFrom = () => {
     onSubmit: async (values) => {
       const res = await loginApi(values);
       if (res.status === 200) {
-        localStorage.setItem('token', res.data.token);
+        storage.setItem('token', res.data.token);
         navigate('/');
       }
     },
