@@ -8,6 +8,7 @@ import './reservationPage.scss';
 function ReservationPage() {
   const [city, setCity] = useState(cityData[0].city);
   const [bookBtn, setBookBtn] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <div className="res-page-container">
@@ -33,7 +34,10 @@ function ReservationPage() {
               <button
                 type="button"
                 className="selectBtn"
-                onClick={() => setBookBtn(!bookBtn)}
+                onClick={() => {
+                  setBookBtn(!bookBtn);
+                  setShowForm(!showForm);
+                }}
               >
                 Book now!
               </button>
@@ -45,8 +49,10 @@ function ReservationPage() {
           display={setBookBtn}
         /> */}
         <ReservationFormNew
-          city={city}
+          reserveCity={city}
           display={setBookBtn}
+          showForm={showForm}
+          handleShowForm={setShowForm}
         />
       </Nav>
     </div>
