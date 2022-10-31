@@ -3,28 +3,19 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 function ConfirmData(props) {
-  const { reservation } = props;
+  const { reservation, jetName, days } = props;
   const { jets } = useSelector((state) => state.jets);
 
   const reservationData = reservation();
-  // const getJet = () => {
-  //   if (jets) {
-  //     return jets.filter((jet) => reservation.jet_id === jet.jet_id)[0];
-  //   }
-  //   return 0;
-  // };
-
-  // const jet = getJet();
   const jet = jets.filter((jet) => reservation.jet_id === jet.jet_id)[0];
+  console.log('reserv data id:', reservationData.jet_id);
+  console.log(jet);
   return (
     <section>
       <h2>Confirm your Jet</h2>
       <div>
         <h3>
-          Jet Name:
-          {jet ? (
-            <>{jet.name}</>
-          ) : null}
+          {jetName}
         </h3>
       </div>
       <div>
@@ -37,6 +28,7 @@ function ConfirmData(props) {
       </div>
       <div>
         Total price:
+        {days}
       </div>
     </section>
   );
@@ -44,6 +36,8 @@ function ConfirmData(props) {
 
 ConfirmData.propTypes = {
   reservation: PropTypes.func.isRequired,
+  jetName: PropTypes.string.isRequired,
+  days: PropTypes.number.isRequired,
 };
 
 export default ConfirmData;

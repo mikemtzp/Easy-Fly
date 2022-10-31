@@ -17,6 +17,7 @@ function ReservationFormNew(props) {
   const [jet, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(startDate);
+  // const [days, setDays] = useState(0);
   // const [confirm, setConfirm] = useState(false);
 
   useEffect(() => {
@@ -26,6 +27,12 @@ function ReservationFormNew(props) {
   const handleJetSelect = (id) => {
     const jet = jets.filter((jet) => id === jet.id)[0];
     setJet(jet);
+  };
+
+  const getDays = (startDate, endDate) => {
+    const diffMilliseconds = endDate.getTime() - startDate.getTime();
+    const days = Math.ceil(diffMilliseconds / (1000 * 60 * 60 * 24));
+    return days;
   };
 
   const reservation = () => {
@@ -90,7 +97,10 @@ function ReservationFormNew(props) {
               <h2 className="date-title">Since</h2>
               <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => {
+                  setStartDate(date);
+                  setEndDate(date);
+                }}
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
@@ -121,12 +131,15 @@ function ReservationFormNew(props) {
             >
               Back
             </button>
-            <button onClick={(e) => submitForm(e)} type="submit">Submit</button>
+            <button type="button">Next</button>
+            {/* <button onClick={(e) => submitForm(e)} type="submit">Submit</button> */}
           </div>
         </form>
       </div>
       <ConfirmData
         reservation={reservation}
+        jetName={jet ? jet.name : ''}
+        days={getDays(startDate, endDate)}
       />
     </section>
   );
