@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './JetDetails.scss';
 import { IoChevronBackCircle } from 'react-icons/io5';
+import { BsFillCalendarCheckFill } from 'react-icons/bs';
 
 function JetDetails() {
   const { jets } = useSelector((state) => state.jets);
@@ -34,6 +35,7 @@ function JetDetails() {
           </ul>
         </div>
         <Link to="/reservation" state={jet} className="details-container__details__reserve">
+          <span className="details-container__details__reserve-calendar"><BsFillCalendarCheckFill /></span>
           Reserve
         </Link>
       </div>
