@@ -18,3 +18,19 @@ export const signupApi = async (user) => {
     throw new Error(err);
   }
 };
+
+export const authenticateApi = async (token) => {
+  try {
+    const res = await axios.get(`${api}/authenticated-user`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!res || res.status !== 200) {
+      throw new Error(
+        "This user can't logged in with the credential provided!",
+      );
+    }
+    return res.data;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
