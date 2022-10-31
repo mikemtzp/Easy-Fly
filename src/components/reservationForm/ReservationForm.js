@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
@@ -7,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './reservatioForm.scss';
 import { addReservation } from '../../redux/reservation/reservationSlice';
 
-function ReservationForm() {
+function ReservationForm(props) {
   const [jetState, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState(new Date());
@@ -19,6 +20,10 @@ function ReservationForm() {
   const dispatch = useDispatch();
   const { state } = useLocation();
   const { jets } = useSelector((state) => state.jets);
+
+  const { city, display } = props;
+
+  console.log(city);
 
   useEffect(() => {
     setJet(jets[0]);
@@ -162,9 +167,15 @@ function ReservationForm() {
         </div>
 
         <button type="submit">Reserve</button>
+        <button onClick={() => display()} type="button">back</button>
       </form>
     </>
   );
 }
+
+ReservationForm.propTypes = {
+  city: PropTypes.string.isRequired,
+  display: PropTypes.func.isRequired,
+};
 
 export default ReservationForm;
