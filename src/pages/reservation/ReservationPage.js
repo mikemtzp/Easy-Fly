@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import ReservationForm from '../../components/reservationForm/ReservationForm';
 import ReservationFormNew from '../../components/reservationForm/ReservatinFormNew';
 import Nav from '../../components/nav/Nav';
 import cityData from './cityData';
@@ -46,10 +45,6 @@ function ReservationPage() {
             </label>
           </section>
         </div>
-        {/* <ReservationForm
-          city={city}
-          display={setBookBtn}
-        /> */}
         <ReservationFormNew
           reserveCity={city}
           display={setBookBtn}
