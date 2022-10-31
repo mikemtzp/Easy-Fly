@@ -23,18 +23,20 @@ function JetDetails() {
         alt={jet.name}
         className="details-container__image"
       />
-      <div className="details-container__info">
-        <h1 className="details-container__info-name">{jet.name}</h1>
-        <ul className="details-container__info-table">
-          <li>{jet.category}</li>
-          <li>{jet.size}</li>
-          <li>{jet.finance_fee}</li>
-          <li>{jet.price_per_day}</li>
-        </ul>
+      <div className="details-container__details">
+        <div className="details-container__details__info">
+          <h1 className="details-container__details__info-name">{jet.name}</h1>
+          <ul className="details-container__details__info-table">
+            <li>{jet.category}</li>
+            <li>{jet.size}</li>
+            <li>{jet.finance_fee}</li>
+            <li>{jet.price_per_day}</li>
+          </ul>
+        </div>
+        <Link to="/reservation" state={jet} className="details-container__details__reserve">
+          Reserve
+        </Link>
       </div>
-      <Link to="/reservation" state={jet} className="details-container__reserve">
-        Reserve
-      </Link>
     </section>
   );
 }
