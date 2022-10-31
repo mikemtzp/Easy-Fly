@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, NavLink } from 'react-router-dom';
-import * as FaIcons from 'react-icons/fa';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import * as AiIcons from 'react-icons/ai';
+import * as FaIcons from 'react-icons/fa';
+import * as IoIcons from 'react-icons/io5';
+import * as MdIcons from 'react-icons/md';
+import * as BtIcons from 'react-icons/bi';
+import * as ImIcons from 'react-icons/im';
 import { motion } from 'framer-motion';
-import SidebarData from './SidebarData';
+import { toast } from 'react-toastify';
+import { Typography } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { authStatus, logout } from '../../redux/users/userSlice';
+
 import './Nav.scss';
 
 function getWindowSize() {
@@ -15,7 +24,9 @@ function getWindowSize() {
 function Nav({ children }) {
   const [sidebar, setSidebar] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
-
+  const { name, status: userStatus } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -29,7 +40,11 @@ function Nav({ children }) {
   }, []);
 
   const showSideBar = () => setSidebar(!sidebar);
-
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
+    toast.success('Successfully logged out');
+  };
   return (
     <>
       {windowSize.innerWidth <= 760 ? (
@@ -49,19 +64,67 @@ function Nav({ children }) {
                     className="menu-bars"
                   />
                 </li>
-                {SidebarData.map((item) => {
-                  const {
-                    title, path, icon, cName, key,
-                  } = item;
-                  return (
-                    <li key={key} className={cName}>
-                      <Link to={path} onClick={showSideBar}>
-                        {icon}
-                        <span>{title}</span>
+
+                <li className="nav-text">
+                  <Link to="/" onClick={showSideBar}>
+                    <FaIcons.FaFighterJet />
+                    <span>Home</span>
+                  </Link>
+                </li>
+                {userStatus === authStatus.authenticated ? (
+                  <>
+                    <li className="nav-text">
+                      <Link to="/reservation" onClick={showSideBar}>
+                        <MdIcons.MdAirplaneTicket />
+                        <span>Reservation</span>
                       </Link>
                     </li>
-                  );
-                })}
+                    <li className="nav-text">
+                      <Link to="/myreservations" onClick={showSideBar}>
+                        <IoIcons.IoBookOutline />
+                        <span>My Reservations</span>
+                      </Link>
+                    </li>
+                    <li className="nav-text">
+                      <Link to="/add-jet" onClick={showSideBar}>
+                        <MdIcons.MdAirplanemodeActive />
+                        <span>Add Jet</span>
+                      </Link>
+                    </li>
+                    <li className="nav-text">
+                      <Link to="/delete-jet" onClick={showSideBar}>
+                        <MdIcons.MdAirplanemodeInactive />
+                        <span>Delete Jet</span>
+                      </Link>
+                    </li>
+                    <li className="desktop-ba">
+                      <Typography>{`Signed in as ${name}!`}</Typography>
+                      <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="link"
+                      >
+                        <BtIcons.BiLogIn />
+                        <span className="title">Logout</span>
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="nav-text">
+                      <Link to="/login" onClick={showSideBar}>
+                        <BtIcons.BiLogIn />
+                        <span>Login</span>
+                      </Link>
+                    </li>
+                    <li className="nav-text">
+                      <Link to="/signup" onClick={showSideBar}>
+                        <ImIcons.ImUserPlus />
+                        <span>Sign Up</span>
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </nav>
           </motion.div>
@@ -76,24 +139,100 @@ function Nav({ children }) {
               </Link>
             </div>
             <ul className="item-container">
-              {SidebarData.map((item) => {
-                const {
-                  title, path, icon, key,
-                } = item;
-                return (
-                  <li key={key} className="desktop-ba">
+              <li className="desktop-ba">
+                <NavLink
+                  end
+                  to="/"
+                  className="link"
+                  activeclassname="link active"
+                >
+                  <FaIcons.FaFighterJet />
+                  <span className="title">Home</span>
+                </NavLink>
+              </li>
+
+              {userStatus === authStatus.authenticated && (
+                <>
+                  <li className="desktop-ba">
                     <NavLink
                       end
-                      to={path}
+                      to="/reservation"
                       className="link"
                       activeclassname="link active"
                     >
-                      {icon}
-                      <span className="title">{title}</span>
+                      <MdIcons.MdAirplaneTicket />
+                      <span className="title">Reservation</span>
                     </NavLink>
                   </li>
-                );
-              })}
+                  <li className="desktop-ba">
+                    <NavLink
+                      end
+                      to="/myreservations"
+                      className="link"
+                      activeclassname="link active"
+                    >
+                      <IoIcons.IoBookOutline />
+                      <span className="title">My Reservations</span>
+                    </NavLink>
+                  </li>
+                  <li className="desktop-ba">
+                    <NavLink
+                      end
+                      to="/add-jet"
+                      className="link"
+                      activeclassname="link active"
+                    >
+                      <MdIcons.MdAirplanemodeActive />
+                      <span className="title">Add Jet</span>
+                    </NavLink>
+                  </li>
+                  <li className="desktop-ba">
+                    <NavLink
+                      end
+                      to="/delete-jet"
+                      className="link"
+                      activeclassname="link active"
+                    >
+                      <MdIcons.MdAirplanemodeInactive />
+                      <span className="title">Delete Jet</span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
+              {userStatus === authStatus.authenticated ? (
+                <li className="desktop-ba">
+                  <Typography>{`Signed in as ${name}!`}</Typography>
+                  <button type="button" onClick={handleLogout} className="link">
+                    <BtIcons.BiLogIn />
+                    <span className="title">Logout</span>
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li className="desktop-ba">
+                    <NavLink
+                      end
+                      to="/login"
+                      className="link"
+                      activeclassname="link active"
+                    >
+                      <BtIcons.BiLogIn />
+                      <span className="title">Login</span>
+                    </NavLink>
+                  </li>
+                  <li className="desktop-ba">
+                    <NavLink
+                      end
+                      to="/signup"
+                      className="link"
+                      activeclassname="link active"
+                    >
+                      <ImIcons.ImUserPlus />
+                      <span className="title">Sign Up</span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <main className="main">{children}</main>
