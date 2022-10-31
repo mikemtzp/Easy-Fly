@@ -12,7 +12,7 @@ const cityData = [
     city: 'Sydney',
   },
   {
-    city: 'Mexico CDX',
+    city: 'Mexico CDMX',
   },
   {
     city: 'Milan',

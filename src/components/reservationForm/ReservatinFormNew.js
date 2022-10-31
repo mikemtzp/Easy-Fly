@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ConfirmData from './ConfirmData';
+import { postReservation } from '../../redux/reservation/reservationAPI';
+import { addReservation } from '../../redux/reservation/reservationSlice';
 
 import './ReservationFormNew.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-import { postReservation } from '../../redux/reservation/reservationAPI';
 
 function ReservationFormNew(props) {
   const {
     reserveCity, display, showForm, handleShowForm,
+    showSection, handleShowSection,
   } = props;
 
   const { jets } = useSelector((state) => state.jets);
   const [jet, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(startDate);
-  // const [days, setDays] = useState(0);
-  // const [confirm, setConfirm] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setJet(jets[0]);
@@ -35,6 +39,10 @@ function ReservationFormNew(props) {
     return days;
   };
 
+  const handleConfirm = () => {
+    handleShowForm(!showForm);
+  };
+
   const reservation = () => {
     if (jet) {
       const res = {
@@ -48,18 +56,20 @@ function ReservationFormNew(props) {
     return 0;
   };
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
     const reserve = reservation();
-    postReservation(reserve);
+    const response = await postReservation(reserve);
+    dispatch(addReservation(response.reservation));
+    navigate('/myreservations');
   };
 
   return (
-    <section className={showForm ? 'newForm-page' : 'hide'}>
-      <div>
+    <section className={showSection ? 'newForm-page' : 'hide'}>
+      <div className={showForm ? '' : 'hide'}>
         <h1 className="newForm-title">Select your Jet!</h1>
-        <form className="form-container" onSubmit={submitForm}>
-          <label htmlFor="jet-select">
+        <form className="form-container" id="reservation-form" onSubmit={submitForm}>
+          <label htmlFor="jet-select" className="jet-label">
             <select
               name="jets"
               id="jet-select"
@@ -127,11 +137,20 @@ function ReservationFormNew(props) {
               onClick={() => {
                 display();
                 handleShowForm(!showForm);
+                handleShowSection(!showSection);
               }}
             >
               Back
             </button>
-            <button type="button">Next</button>
+            <button
+              type="button"
+              onClick={() => {
+                handleShowForm(!showForm);
+                setConfirm(!confirm);
+              }}
+            >
+              Next
+            </button>
             {/* <button onClick={(e) => submitForm(e)} type="submit">Submit</button> */}
           </div>
         </form>
@@ -140,6 +159,12 @@ function ReservationFormNew(props) {
         reservation={reservation}
         jetName={jet ? jet.name : ''}
         days={getDays(startDate, endDate)}
+        ppe={jet ? jet.price_per_day : 0}
+        finFee={jet ? jet.finance_fee : 0}
+        city={reserveCity}
+        handleForm={handleConfirm}
+        confirmPage={confirm}
+        setConfirmPage={setConfirm}
       />
     </section>
   );
@@ -150,6 +175,8 @@ ReservationFormNew.propTypes = {
   display: PropTypes.func.isRequired,
   handleShowForm: PropTypes.func.isRequired,
   showForm: PropTypes.bool.isRequired,
+  handleShowSection: PropTypes.func.isRequired,
+  showSection: PropTypes.bool.isRequired,
 };
 
 export default ReservationFormNew;

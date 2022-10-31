@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import ReservationForm from '../../components/reservationForm/ReservationForm';
 import ReservationFormNew from '../../components/reservationForm/ReservatinFormNew';
 import Nav from '../../components/nav/Nav';
 import cityData from './cityData';
@@ -8,12 +7,13 @@ import './reservationPage.scss';
 function ReservationPage() {
   const [city, setCity] = useState(cityData[0].city);
   const [bookBtn, setBookBtn] = useState(false);
+  const [showSection, setShowSection] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
   return (
     <div className="res-page-container">
       <Nav>
-        <div className={!bookBtn ? null : 'hide'}>
+        <div className={!bookBtn ? 'res-page-hidder' : 'hide'}>
           <section className="reservation-page">
             <h1 className="res-title">Book a Jet!</h1>
             <p className="res-paragraph">
@@ -37,6 +37,7 @@ function ReservationPage() {
                 onClick={() => {
                   setBookBtn(!bookBtn);
                   setShowForm(!showForm);
+                  setShowSection(!showSection);
                 }}
               >
                 Book now!
@@ -44,15 +45,13 @@ function ReservationPage() {
             </label>
           </section>
         </div>
-        {/* <ReservationForm
-          city={city}
-          display={setBookBtn}
-        /> */}
         <ReservationFormNew
           reserveCity={city}
           display={setBookBtn}
           showForm={showForm}
           handleShowForm={setShowForm}
+          showSection={showSection}
+          handleShowSection={setShowSection}
         />
       </Nav>
     </div>
