@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import {
   Box,
   IconButton,
@@ -11,8 +13,7 @@ import {
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
-import { loginApi } from '../../auth-api/AuthApi';
-import LocalStorage from '../../app/LocalStorage';
+import { loginThunk } from '../../redux/users/userSlice';
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const animate = {
@@ -25,10 +26,9 @@ const animate = {
   },
 };
 
-const storage = new LocalStorage();
-
 const LoginFrom = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const LoginSchema = Yup.object().shape({
     username: Yup.string().required('Username is required!'),
@@ -41,12 +41,16 @@ const LoginFrom = () => {
       password: '',
     },
     validationSchema: LoginSchema,
-    onSubmit: async (values) => {
-      const res = await loginApi(values);
-      if (res.status === 200) {
-        storage.setItem('token', res.data.token);
-        navigate('/');
-      }
+    onSubmit: (values) => {
+      dispatch(loginThunk(values))
+        .unwrap()
+        .then(({ data }) => {
+          toast.success(`Hello ${data.name}. You are successfully logged in.`);
+          navigate('/');
+        })
+        .catch(() => {
+          toast.error('You username or password is wrong!');
+        });
     },
   });
   const {
