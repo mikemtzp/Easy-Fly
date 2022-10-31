@@ -58,7 +58,7 @@ function ConfirmData(props) {
             setConfirmPage(!confirmPage);
           }}
         >
-          Back
+          Edit
         </button>
         <button
           type="submit"
