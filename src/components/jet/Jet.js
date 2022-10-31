@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import './Jet.scss';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-// import * as TbIcons from 'react-icons/tb';
 
 function Jet(props) {
   const {
