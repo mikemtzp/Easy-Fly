@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
 .main {
   z-index: 1;
-  margin: auto;
+  flex: 1;
 }
 
 .navbar {
-  height: 7rem;
+  height: 5rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-basis: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 .menu-bars {
@@ -62,6 +65,10 @@
   padding: 0 1.6rem;
   border-radius: 0.5rem;
   color: #fff;
+
+  span {
+    margin-left: 1rem;
+  }
 }
 
 .nav-text a:hover {
@@ -88,7 +95,8 @@
 //desktop
 .desktop-container {
   display: flex;
-  column-gap: 2rem;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 .desk-nav {
@@ -100,10 +108,11 @@
 
 .sidebar {
   height: 100vh;
-  background-color: #05ab2c;
-  color: #fff;
+  background-color: white;
+  color: black;
   width: 200px;
   border-top-right-radius: 5px;
+  border-right: 0.1rem solid #cacaca;
 }
 
 .logo {
@@ -119,10 +128,17 @@
 
 .link {
   display: flex;
-  color: #fff;
+  color: #3b3b3b;
   gap: 3px;
-  padding: 3px 10px;
+  padding: 1.5rem 10px;
   text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 900;
+  align-items: flex-end;
+
+  .title {
+    margin-left: 1rem;
+  }
 }
 
 .link:hover {
@@ -130,15 +146,38 @@
   transition: 0.2s;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  background: rgb(45, 51, 89);
+  background-color: #97bf11;
+  color: white;
 }
 
 .link-text {
   font-size: 18px;
+  font-weight: 700;
 }
 
 .item-container {
   .desktop-ba {
     padding: 2rem 0 0 1.5rem;
+  }
+}
+
+.active {
+  background-color: #97bf11;
+  color: white;
+}
+
+.mobile-container {
+  flex: 1;
+
+  .home {
+    justify-content: flex-start;
+
+    &__card-container {
+      @media only screen and (min-width: 500px) {
+        .slick-slider {
+          width: 75vw;
+        }
+      }
+    }
   }
 }

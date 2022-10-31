@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import LeftArrow from '../../components/arrows/LeftArrow';
 import Jet from '../../components/jet/Jet';
 import './main.scss';
+import LeftArrow from '../../components/arrows/LeftArrow';
 import RightArrow from '../../components/arrows/RightArrow';
 import Nav from '../../components/nav/Nav';
 
@@ -32,7 +32,7 @@ function Main() {
         },
       },
       {
-        breakpoint: 450,
+        breakpoint: 500,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

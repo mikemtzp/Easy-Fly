@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { useFormik, Form, FormikProvider } from 'formik';
 import {
   Stack,
@@ -9,10 +11,11 @@ import {
   Button,
   InputAdornment,
 } from '@mui/material';
+import { toast } from 'react-toastify';
 
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
-import { signupApi } from '../../auth-api/AuthApi';
+import { signupThunk } from '../../redux/users/userSlice';
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const animate = {
@@ -27,6 +30,8 @@ const animate = {
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
@@ -54,8 +59,16 @@ const SignupForm = () => {
       password: '',
     },
     validationSchema: SignupSchema,
-    onSubmit: async (values) => {
-      await signupApi(values);
+    onSubmit: (values) => {
+      dispatch(signupThunk(values))
+        .unwrap()
+        .then(() => {
+          toast.success('Successfuly Registered!');
+          navigate('/login');
+        })
+        .catch(() => {
+          toast.error('Registraytion Failed!');
+        });
     },
   });
 
