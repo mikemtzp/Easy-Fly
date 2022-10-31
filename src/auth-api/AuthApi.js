@@ -21,7 +21,7 @@ export const signupApi = async (user) => {
 
 export const authenticateApi = async (token) => {
   try {
-    const res = await axios.post(`${api}/authenticated-user"`, {
+    const res = await axios.get(`${api}/authenticated-user`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res || res.status !== 200) {
