@@ -3,7 +3,7 @@ import api from '../../config';
 
 export const postReservation = async (reservation) => {
   try {
-    const token = localStorage.getItem('token');
+    const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const res = await axios.post(`${api}/add_reservation`, { reservation }, { headers: { Authorization: `Bearer ${token}` } });
     return res.data;
   } catch (err) {
