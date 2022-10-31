@@ -1,21 +1,23 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './JetDetails.scss';
+import { IoChevronBackCircle } from 'react-icons/io5';
 
 function JetDetails() {
   const { jets } = useSelector((state) => state.jets);
+  const navigate = useNavigate();
   const { id } = useParams();
-  // const params = useParams();
   const idToNum = parseInt(id, 10);
   const jet = jets.filter((jet) => jet.id === idToNum)[0];
 
-  console.log(typeof id);
-  console.log(jets);
-  console.log(jet);
+  const handleBack = () => {
+    navigate(-1, { replace: true });
+  };
 
   return (
     <section className="details-container">
+      <button className="details-container__back" type="button" onClick={handleBack} aria-label="Go back"><IoChevronBackCircle /></button>
       <img
         src={jet.image}
         alt={jet.name}

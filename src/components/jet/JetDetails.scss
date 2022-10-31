@@ -6,6 +6,19 @@
   height: 90vh;
   text-align: center;
 
+  &__back {
+    display: flex;
+    outline: none;
+    border: none;
+    background-color: #97bf11;
+    padding: 1rem 2rem;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    align-self: flex-end;
+    font-size: 2rem;
+    color: #e4eec1;
+  }
+
   &__image {
     width: 80%;
     border-bottom-left-radius: 30px;
