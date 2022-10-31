@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 
 .res-page-container {
-  background-color: #95BF02;
+  background-color: #95bf02;
   flex: 1;
 
   .mobile-container {
@@ -51,7 +51,7 @@
 
 .selectCity,
 .selectBtn {
-  background-color: #95BF02;
+  background-color: #95bf02;
   border: solid 0.1rem white;
   padding: 1rem 1.5rem;
   border-radius: 2rem;
@@ -60,5 +60,49 @@
 
 .selectBtn {
   background-color: white;
-  color: #95BF02;
+  color: #95bf02;
+}
+
+@media only screen and (min-width: 500px) {
+  .res-page-container {
+    .res-title {
+      font-size: 5rem;
+    }
+  
+    .res-paragraph {
+      font-size: 1.8rem;
+      max-width: 80rem;
+      padding: 0 3rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .res-page-container {
+    .main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .newForm-page {
+        justify-content: center;
+      }
+
+      .res-page-hidder {
+        height: 100vh;
+      }
+
+      .selectBtn:hover {
+        background-color: #95bf02;
+        color: white;
+        font-weight: 900;
+      }
+
+      .selectCity:hover {
+        background-color: #95bf02;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
 }

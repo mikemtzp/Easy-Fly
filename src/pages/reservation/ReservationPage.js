@@ -14,7 +14,7 @@ function ReservationPage() {
   return (
     <div className="res-page-container">
       <Nav>
-        <div className={!bookBtn ? null : 'hide'}>
+        <div className={!bookBtn ? 'res-page-hidder' : 'hide'}>
           <section className="reservation-page">
             <h1 className="res-title">Book a Jet!</h1>
             <p className="res-paragraph">

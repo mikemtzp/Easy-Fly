@@ -20,8 +20,8 @@ function ConfirmData(props) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th className="tbale-head" scope="col">Details</th>
-            <th scope="col">Selected</th>
+            <th scope="col">Details</th>
+            <th className="table-head" scope="col">Selected</th>
           </tr>
         </thead>
         <tbody>
