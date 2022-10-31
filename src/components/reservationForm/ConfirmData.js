@@ -10,14 +10,13 @@ function ConfirmData(props) {
     reservation, jetName, days, ppe, finFee, city, handleForm,
     confirmPage, setConfirmPage,
   } = props;
-  // const { jets } = useSelector((state) => state.jets);
 
   const reservationData = reservation();
 
   return (
     <section className={!confirmPage ? 'hide' : 'confirmation-container'}>
       <h2 className="confirm-title">Confirm your Jet</h2>
-      <Table striped bordered hover>
+      <Table striped bordered>
         <thead>
           <tr>
             <th scope="col">Details</th>
