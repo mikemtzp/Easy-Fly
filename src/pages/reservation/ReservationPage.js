@@ -8,6 +8,7 @@ import './reservationPage.scss';
 function ReservationPage() {
   const [city, setCity] = useState(cityData[0].city);
   const [bookBtn, setBookBtn] = useState(false);
+  const [showSection, setShowSection] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -37,6 +38,7 @@ function ReservationPage() {
                 onClick={() => {
                   setBookBtn(!bookBtn);
                   setShowForm(!showForm);
+                  setShowSection(!showSection);
                 }}
               >
                 Book now!
@@ -53,6 +55,8 @@ function ReservationPage() {
           display={setBookBtn}
           showForm={showForm}
           handleShowForm={setShowForm}
+          showSection={showSection}
+          handleShowSection={setShowSection}
         />
       </Nav>
     </div>
