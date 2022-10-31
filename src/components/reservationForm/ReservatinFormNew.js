@@ -17,8 +17,6 @@ function ReservationFormNew(props) {
   const [jet, setJet] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(startDate);
-  // const [days, setDays] = useState(0);
-  // const [confirm, setConfirm] = useState(false);
 
   useEffect(() => {
     setJet(jets[0]);
@@ -140,6 +138,8 @@ function ReservationFormNew(props) {
         reservation={reservation}
         jetName={jet ? jet.name : ''}
         days={getDays(startDate, endDate)}
+        ppe={jet ? jet.price_per_day : 0}
+        finFee={jet ? jet.finance_fee : 0}
       />
     </section>
   );
