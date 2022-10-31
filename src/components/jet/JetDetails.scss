@@ -27,22 +27,23 @@
 
   &__details {
     height: 40%;
-    
+
     &__info {
       margin-bottom: 3rem;
 
       &-name { text-transform: uppercase; }
+
       &-table {
         margin-top: 1rem;
         text-transform: capitalize;
         width: 80vw;
-  
+
         & li:nth-child(odd) { background-color: #97bf11; }
         & li:nth-child(3)::before { content: "$"; }
         & li:nth-child(4)::before { content: "$"; }
       }
     }
-  
+
     &__reserve {
       padding: 1rem;
       width: 80vw;
@@ -65,14 +66,14 @@
     flex-direction: row;
     justify-content: space-between;
     height: 100vh;
-  
+
     &__back {
       align-self: flex-end;
       margin-bottom: 5rem;
 
       &:hover { cursor: pointer; }
     }
-  
+
     &__image {
       width: 60%;
       border-bottom-left-radius: 30px;
@@ -90,6 +91,7 @@
         margin-bottom: 0;
 
         &-name { text-transform: uppercase; }
+
         &-table {
           margin-top: 1rem;
           text-transform: capitalize;

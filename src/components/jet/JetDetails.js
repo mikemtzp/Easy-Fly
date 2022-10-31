@@ -30,7 +30,7 @@ function JetDetails() {
           <ul className="details-container__details__info-table">
             <li>{jet.category}</li>
             <li>{jet.size}</li>
-            <li>{jet.finance_fee}</li>
+            <li>{jet.finance_fee}</li> 
             <li>{jet.price_per_day}</li>
           </ul>
         </div>
