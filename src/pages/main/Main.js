@@ -51,6 +51,9 @@ function Main() {
             <h1>LATEST MODELS</h1>
             <p>Please select a Jet Model</p>
           </div>
+          <div className="dots-container">
+            <div className="dots" />
+          </div>
           <ul className="home__card-container">
             <Slider {...sliderSettings}>
               {jets.map((data) => (
