@@ -31,7 +31,6 @@ function MyReservation() {
                 className="myReservationCard-container"
                 sx={{
                   minWidth: '350px',
-                  // maxWidth: '400px',
                 }}
               >
                 <MyReservationCard
