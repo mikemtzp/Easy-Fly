@@ -9,8 +9,8 @@ function DeleteJetPage() {
 
   return (
     <Nav>
+      <h1 className="delete-jet-title">Select a Jet to delete from the list</h1>
       <div className="delete-jet-container">
-        <h1 className="delete-jet-container__title">Select a Jet to delete from the list</h1>
         {jets.map((jet) => (
           <DeleteJet
             name={jet.name}
