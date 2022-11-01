@@ -27,12 +27,26 @@ function JetDetails() {
       <div className="details-container__details">
         <div className="details-container__details__info">
           <h1 className="details-container__details__info-name">{jet.name}</h1>
-          <ul className="details-container__details__info-table">
-            <li>{jet.category}</li>
-            <li>{jet.size}</li>
-            <li>{jet.finance_fee}</li>
-            <li>{jet.price_per_day}</li>
-          </ul>
+          <table className="details-container__details__info-table">
+            <tbody className="details-container__details__info-table-body">
+              <tr>
+                <td>Category:</td>
+                <td>{jet.category}</td>
+              </tr>
+              <tr>
+                <td>Size:</td>
+                <td>{jet.size}</td>
+              </tr>
+              <tr>
+                <td>Finance fee:</td>
+                <td>{jet.finance_fee}</td>
+              </tr>
+              <tr>
+                <td>Price per day:</td>
+                <td>{jet.price_per_day}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <Link to="/reservation" state={jet} className="details-container__details__reserve">
           <span className="details-container__details__reserve-calendar"><BsFillCalendarCheckFill /></span>
