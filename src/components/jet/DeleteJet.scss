@@ -6,15 +6,19 @@
   border-bottom-left-radius: 30px;
   border-top-right-radius: 30px;
   padding: 1rem;
+  width: min-content;
 
-  & h2, p { margin: 0; }
+  & h2,
+  p { margin: 0; }
+
   &__image {
     border-bottom-left-radius: 30px;
     border-top-right-radius: 30px;
   }
+
   &__info {
     text-align: center;
-    max-width: fit-content;
+    width: fit-content;
 
     &-title {
       font-size: 1.6rem;
