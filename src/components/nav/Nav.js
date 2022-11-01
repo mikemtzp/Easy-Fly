@@ -97,12 +97,12 @@ function Nav({ children }) {
                         <span>Delete Jet</span>
                       </Link>
                     </li>
-                    <li className="desktop-ba">
+                    <li className="nav-text logout-li">
                       <Typography>{`Signed in as ${name}!`}</Typography>
                       <button
                         type="button"
                         onClick={handleLogout}
-                        className="link"
+                        className="mob-logout"
                       >
                         <BtIcons.BiLogIn />
                         <span className="title">Logout</span>
@@ -202,7 +202,7 @@ function Nav({ children }) {
               {userStatus === authStatus.authenticated ? (
                 <li className="desktop-ba">
                   <Typography>{`Signed in as ${name}!`}</Typography>
-                  <button type="button" onClick={handleLogout} className="link logoutBtn">
+                  <button type="button" onClick={handleLogout} className="logoutBtn link">
                     <BtIcons.BiLogIn />
                     <span className="title">Logout</span>
                   </button>

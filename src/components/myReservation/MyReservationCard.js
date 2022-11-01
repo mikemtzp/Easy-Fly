@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
+import { toast } from 'react-toastify';
 import AlertDialog from './Alert';
 import { deleteReservation } from '../../redux/reservation/reservationAPI';
 import { getReservationsThunk } from '../../redux/reservation/reservationSlice';
@@ -17,8 +18,13 @@ function MyReservationCard(props) {
   const dispatch = useDispatch();
 
   const handleCancel = async () => {
-    await deleteReservation(reservation);
-    dispatch(getReservationsThunk());
+    const res = await deleteReservation(reservation);
+    if (res.reservation !== null) {
+      dispatch(getReservationsThunk());
+      toast.warn('Reservation cancelled Successfuly', { theme: 'colored' });
+    } else {
+      toast.error('Unable to create Reservation');
+    }
   };
 
   const style = {
@@ -35,7 +41,7 @@ function MyReservationCard(props) {
           ...style,
         }}
       >
-        <span>Your Jet will be waiting for you in: </span>
+        <span>City: </span>
         {city}
       </Box>
       <Box
