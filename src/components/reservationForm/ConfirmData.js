@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { useSelector } from 'react-redux';
 import './confirmData.scss';
-import Table from 'react-bootstrap/Table';
+import BasicTable from './Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ConfirmData(props) {
@@ -16,39 +15,13 @@ function ConfirmData(props) {
   return (
     <section className={!confirmPage ? 'hide' : 'confirmation-container'}>
       <h2 className="confirm-title">Confirm your Jet</h2>
-      <Table striped bordered>
-        <thead>
-          <tr>
-            <th scope="col">Details</th>
-            <th className="table-head" scope="col">Selected</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="col">Jet</th>
-            <td>{jetName}</td>
-          </tr>
-          <tr>
-            <th scope="col">City</th>
-            <td>{city}</td>
-          </tr>
-          <tr>
-            <th scope="col">Start Date</th>
-            <td>{reservationData.starting_day}</td>
-          </tr>
-          <tr>
-            <th scope="col">Finish Date</th>
-            <td>{reservationData.finish_day}</td>
-          </tr>
-          <tr>
-            <th scope="col">Price</th>
-            <td>
-              $
-              {(days * ppe) + finFee}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
+      <BasicTable
+        jet={jetName}
+        price={(days * ppe) + finFee}
+        origin={city}
+        start={reservationData.starting_day}
+        end={reservationData.finish_day}
+      />
       <div className="buttons-container">
         <button
           type="button"
