@@ -25,7 +25,6 @@ function App() {
   const { token } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(getJetsThunk());
-    dispatch(getReservationsThunk());
   }, [dispatch]);
 
   useEffect(() => {
@@ -39,6 +38,12 @@ function App() {
         });
     } else {
       dispatch(setUnAuthenticated());
+    }
+  }, [dispatch, token]);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getReservationsThunk());
     }
   }, [dispatch, token]);
 
