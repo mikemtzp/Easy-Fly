@@ -2,11 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteJet } from '../../redux/jets/jetAPI';
 import { getJetsThunk } from '../../redux/jets/jetSlice';
 import './DeleteJet.scss';
+import AlertDialog from '../myReservation/Alert';
 
 function DeleteJet(props) {
   const {
@@ -24,6 +23,8 @@ function DeleteJet(props) {
     navigate('/');
   };
 
+  const dialog = 'This jet will be deleted permanently. Are you sure you want to continue?';
+
   return (
     <div className="delete-jet-card">
       <div>
@@ -39,9 +40,12 @@ function DeleteJet(props) {
         <h2 className="delete-jet-card__info-title">{name}</h2>
         <p className="delete-jet-card__info-text">{description}</p>
       </div>
-      <div>
-        <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={(e) => handleDelete(e, id)}>Delete</Button>
-      </div>
+      <AlertDialog
+        cancel={(e) => handleDelete(e, id)}
+        dialogTitle="Delete Jet?"
+        dialogContent={dialog}
+        cancelBtn="Delete"
+      />
     </div>
   );
 }
