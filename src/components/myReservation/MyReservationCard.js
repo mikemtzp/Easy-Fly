@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
+import AlertDialog from './Alert';
 import { deleteReservation } from '../../redux/reservation/reservationAPI';
 import { getReservationsThunk } from '../../redux/reservation/reservationSlice';
 import './myReservationCard.scss';
@@ -20,27 +21,54 @@ function MyReservationCard(props) {
     dispatch(getReservationsThunk());
   };
 
+  const style = {
+    display: 'flex',
+    justifyContent: 'space-between',
+  };
+
+  const dialog = 'This action cannot be undone. You will need to make a new reservation if you decide to recover your reservation.';
+
   return (
     <>
-      <Box>
+      <Box
+        sx={{
+          ...style,
+        }}
+      >
         <span>Your Jet will be waiting for you in: </span>
         {city}
       </Box>
-      <Box>
+      <Box
+        sx={{
+          ...style,
+        }}
+      >
         <span>The day: </span>
         {startingDay}
       </Box>
-      <Box>
+      <Box
+        sx={{
+          ...style,
+        }}
+      >
         <span>Until the day: </span>
         {finishDay}
       </Box>
-      <Box>
+      <Box
+        sx={{
+          ...style,
+          marginBottom: '1rem',
+        }}
+      >
         <span>You are renting: </span>
         {jets.map((jet) => (jet.id === jetId ? jet.name : null))}
       </Box>
-      <Button variant="contained" color="primary" onClick={() => handleCancel()}>
-        Cancel Jet
-      </Button>
+      <AlertDialog
+        cancel={handleCancel}
+        dialogTitle="Cancel Reservation?"
+        dialogContent={dialog}
+        cancelBtn="Cancel Reservation"
+      />
     </>
   );
 }
