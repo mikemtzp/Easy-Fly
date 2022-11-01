@@ -54,6 +54,11 @@ BasicTable.propTypes = {
   jet: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   origin: PropTypes.string.isRequired,
-  start: PropTypes.string.isRequired,
-  end: PropTypes.string.isRequired,
+  start: PropTypes.string,
+  end: PropTypes.string,
+};
+
+BasicTable.defaultProps = {
+  start: '',
+  end: '',
 };
