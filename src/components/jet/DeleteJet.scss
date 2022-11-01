@@ -4,6 +4,9 @@
   row-gap: 1rem;
 
   & h2, p { margin: 0; }
-
   &__info { text-align: center; }
+  &__image {
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
 }

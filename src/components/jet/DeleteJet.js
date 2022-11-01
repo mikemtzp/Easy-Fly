@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteJet } from '../../redux/jets/jetAPI';
 import { getJetsThunk } from '../../redux/jets/jetSlice';
 import './DeleteJet.scss';
@@ -31,6 +32,7 @@ function DeleteJet(props) {
           alt={name}
           height="150px"
           width="250px"
+          className="delete-jet-card__image"
         />
       </div>
       <div className="delete-jet-card__info">
@@ -38,7 +40,7 @@ function DeleteJet(props) {
         <p>{description}</p>
       </div>
       <div>
-        <Button variant="contained" color="error" onClick={(e) => handleDelete(e, id)}>Delete</Button>
+        <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={(e) => handleDelete(e, id)}>Delete</Button>
       </div>
     </div>
   );
