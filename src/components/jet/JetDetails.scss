@@ -17,6 +17,8 @@
     align-self: flex-start;
     font-size: 2rem;
     color: #e4eec1;
+
+    &:hover { color: #0d6efd; }
   }
 
   &__image {
@@ -38,9 +40,11 @@
         text-transform: capitalize;
         width: 80vw;
 
-        & li:nth-child(odd) { background-color: #97bf11; }
-        & li:nth-child(3)::before { content: "$"; }
-        & li:nth-child(4)::before { content: "$"; }
+        &-body {
+          & tr:nth-child(odd) { background-color: #97bf11; }
+          & tr:nth-child(3)td:nth-child(2):before { content: "$"; }
+          & tr:nth-child(4)td:nth-child(2):before { content: "$"; }
+        }
       }
     }
 
@@ -52,9 +56,11 @@
       border-radius: 5px;
       color: #fff;
 
+      &:hover { color: #0d6efd; }
+
       &-calendar {
         margin-right: 1rem;
-        vertical-align: middle;
+        vertical-align: text-bottom;
       }
     }
   }
@@ -96,11 +102,11 @@
           margin-top: 1rem;
           text-transform: capitalize;
           width: 20vw;
+          padding-left: 0;
         }
       }
 
       &__reserve {
-        padding: 1rem;
         width: 10vw;
       }
     }
