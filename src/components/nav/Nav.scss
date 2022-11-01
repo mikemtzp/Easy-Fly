@@ -212,3 +212,39 @@
     }
   }
 }
+
+.liIcons {
+  padding: 2rem;
+  position: absolute;
+  left: -2px;
+  bottom: 0;
+
+  .footer {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .icon-container {
+    color: white;
+    border-color: transparent;
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  .liIcons {
+  
+    .footer {
+      color: black;
+    }
+  
+    .icon-container {
+      color: #464646;
+    }
+  }
+}
