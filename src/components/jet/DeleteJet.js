@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import { deleteJet } from '../../redux/jets/jetAPI';
 import { getJetsThunk } from '../../redux/jets/jetSlice';
 import './DeleteJet.scss';
@@ -12,7 +12,6 @@ function DeleteJet(props) {
     name, description, image, id,
   } = props;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleDelete = async (e, jetId) => {
     e.preventDefault();
@@ -20,7 +19,7 @@ function DeleteJet(props) {
     const jet = { id: jetId };
     await deleteJet(jet);
     dispatch(getJetsThunk());
-    navigate('/');
+    toast.success('Jet Deleted Successfuly!');
   };
 
   const dialog = 'This jet will be deleted permanently. Are you sure you want to continue?';
