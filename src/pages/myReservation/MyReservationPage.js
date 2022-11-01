@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Container from '@mui/material/Grid';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import MyReservationCard from '../../components/myReservation/MyReservationCard';
 import Nav from '../../components/nav/Nav';
 import './myReservation.scss';
@@ -25,6 +25,13 @@ function MyReservation() {
         >
           <h1>My reservations</h1>
           <section>
+            {reservations.length === 0 && (
+              <Box>
+                <Typography variant="h4" sx={{ mt: 5 }}>
+                  No reservation added yet!
+                </Typography>
+              </Box>
+            )}
             {reservations.map((reservation) => (
               <Box
                 key={reservation.created_at}
