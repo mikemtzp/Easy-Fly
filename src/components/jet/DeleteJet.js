@@ -1,16 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import { deleteJet } from '../../redux/jets/jetAPI';
 import { getJetsThunk } from '../../redux/jets/jetSlice';
+import './DeleteJet.scss';
+import AlertDialog from '../myReservation/Alert';
 
 function DeleteJet(props) {
   const {
     name, description, image, id,
   } = props;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleDelete = async (e, jetId) => {
     e.preventDefault();
@@ -18,26 +19,32 @@ function DeleteJet(props) {
     const jet = { id: jetId };
     await deleteJet(jet);
     dispatch(getJetsThunk());
-    navigate('/');
+    toast.success('Jet Deleted Successfuly!');
   };
 
+  const dialog = 'This jet will be deleted permanently. Are you sure you want to continue?';
+
   return (
-    <div>
+    <div className="delete-jet-card">
       <div>
         <img
           src={image}
           alt={name}
           height="150px"
           width="250px"
+          className="delete-jet-card__image"
         />
       </div>
-      <div>
-        <h2>{name}</h2>
-        <p>{description}</p>
+      <div className="delete-jet-card__info">
+        <h2 className="delete-jet-card__info-title">{name}</h2>
+        <p className="delete-jet-card__info-text">{description}</p>
       </div>
-      <div>
-        <button type="button" onClick={(e) => handleDelete(e, id)}>Delete</button>
-      </div>
+      <AlertDialog
+        cancel={(e) => handleDelete(e, id)}
+        dialogTitle="Delete Jet?"
+        dialogContent={dialog}
+        cancelBtn="Delete"
+      />
     </div>
   );
 }

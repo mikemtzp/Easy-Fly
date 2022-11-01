@@ -4,6 +4,7 @@
   z-index: 1;
   flex: 1;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 .navbar {
@@ -100,6 +101,11 @@
   font-family: 'Lato', sans-serif;
 }
 
+.logoutBtn {
+  width: 100%;
+  align-items: baseline;
+}
+
 .desk-nav {
   flex-basis: 20%;
   border-right: 1px solid rgb(222, 222, 222);
@@ -157,6 +163,8 @@
 }
 
 .item-container {
+  padding-left: 0.5rem;
+
   .desktop-ba {
     padding: 2rem 0 0 1.5rem;
   }

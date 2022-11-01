@@ -202,7 +202,7 @@ function Nav({ children }) {
               {userStatus === authStatus.authenticated ? (
                 <li className="desktop-ba">
                   <Typography>{`Signed in as ${name}!`}</Typography>
-                  <button type="button" onClick={handleLogout} className="link">
+                  <button type="button" onClick={handleLogout} className="link logoutBtn">
                     <BtIcons.BiLogIn />
                     <span className="title">Logout</span>
                   </button>

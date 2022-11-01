@@ -10,27 +10,43 @@ function MyReservation() {
   const { reservations } = useSelector((state) => state.reservations);
 
   return (
-    <Nav>
-      <Container className="myReservation-container">
-        <h1>My reservations Page</h1>
-        <section>
-          {reservations.map((reservation) => (
-            <Box
-              key={reservation.created_at}
-              className="myReservationCard-container"
-            >
-              <MyReservationCard
-                city={reservation.city}
-                startingDay={reservation.starting_day}
-                finishDay={reservation.finish_day}
-                jetId={reservation.jet_id}
-                reservationId={reservation.id}
-              />
-            </Box>
-          ))}
-        </section>
-      </Container>
-    </Nav>
+    <div className="myReservation">
+      <Nav>
+        <Container
+          sx={{
+            flexDirection: 'column',
+            padding: '2rem 0',
+            backgroundColor: '#95bf02',
+            color: 'white',
+            height: '100vh',
+            width: '100%',
+          }}
+          className="myReservation-container"
+          component="section"
+        >
+          <h1>My reservations</h1>
+          <section>
+            {reservations.map((reservation) => (
+              <Box
+                key={reservation.created_at}
+                className="myReservationCard-container"
+                sx={{
+                  maxWidth: '600px',
+                }}
+              >
+                <MyReservationCard
+                  city={reservation.city}
+                  startingDay={reservation.starting_day}
+                  finishDay={reservation.finish_day}
+                  jetId={reservation.jet_id}
+                  reservationId={reservation.id}
+                />
+              </Box>
+            ))}
+          </section>
+        </Container>
+      </Nav>
+    </div>
   );
 }
 
