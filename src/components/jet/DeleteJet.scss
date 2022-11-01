@@ -1,0 +1,9 @@
+.delete-jet-card {
+  display: grid;
+  justify-items: center;
+  row-gap: 1rem;
+
+  & h2, p { margin: 0; }
+
+  &__info { text-align: center; }
+}

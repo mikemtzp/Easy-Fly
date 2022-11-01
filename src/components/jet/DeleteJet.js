@@ -2,8 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
 import { deleteJet } from '../../redux/jets/jetAPI';
 import { getJetsThunk } from '../../redux/jets/jetSlice';
+import './DeleteJet.scss';
 
 function DeleteJet(props) {
   const {
@@ -22,7 +24,7 @@ function DeleteJet(props) {
   };
 
   return (
-    <div>
+    <div className="delete-jet-card">
       <div>
         <img
           src={image}
@@ -31,12 +33,12 @@ function DeleteJet(props) {
           width="250px"
         />
       </div>
-      <div>
+      <div className="delete-jet-card__info">
         <h2>{name}</h2>
         <p>{description}</p>
       </div>
       <div>
-        <button type="button" onClick={(e) => handleDelete(e, id)}>Delete</button>
+        <Button variant="contained" color="error" onClick={(e) => handleDelete(e, id)}>Delete</Button>
       </div>
     </div>
   );
