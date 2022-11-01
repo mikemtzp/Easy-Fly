@@ -45,6 +45,9 @@ function ReservationFormNew(props) {
   };
 
   const reservation = () => {
+    if (state) {
+      setJet(state);
+    }
     if (jet) {
       const res = {
         jet_id: jet.id,
@@ -167,7 +170,6 @@ function ReservationFormNew(props) {
             >
               Next
             </button>
-            {/* <button onClick={(e) => submitForm(e)} type="submit">Submit</button> */}
           </div>
         </form>
       </div>
