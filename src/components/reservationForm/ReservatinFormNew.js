@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
 import ConfirmData from './ConfirmData';
@@ -23,6 +23,7 @@ function ReservationFormNew(props) {
   const [confirm, setConfirm] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   useEffect(() => {
     setJet(jets[0]);
@@ -70,20 +71,35 @@ function ReservationFormNew(props) {
         <h1 className="newForm-title">Select your Jet!</h1>
         <form className="form-container" id="reservation-form" onSubmit={submitForm}>
           <label htmlFor="jet-select" className="jet-label">
-            <select
-              name="jets"
-              id="jet-select"
-              onChange={(e) => handleJetSelect(parseInt(e.target.value, 10))}
-            >
-              {jets.map((data) => (
+            {state ? (
+              <select
+                name="jets"
+                id="jet-select"
+                onChange={(e) => handleJetSelect(parseInt(e.target.value, 10))}
+              >
                 <option
-                  key={`jet-${data.id}`}
-                  value={data.id}
+                  key={`jet-${state.id}`}
+                  value={state.id}
                 >
-                  {data.name}
+                  {state.name}
                 </option>
-              ))}
-            </select>
+              </select>
+            ) : (
+              <select
+                name="jets"
+                id="jet-select"
+                onChange={(e) => handleJetSelect(parseInt(e.target.value, 10))}
+              >
+                {jets.map((data) => (
+                  <option
+                    key={`jet-${data.id}`}
+                    value={data.id}
+                  >
+                    {data.name}
+                  </option>
+                ))}
+              </select>
+            )}
           </label>
           {jet ? (
             <div className="jet-details-container">
