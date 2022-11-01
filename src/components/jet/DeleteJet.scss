@@ -2,11 +2,30 @@
   display: grid;
   justify-items: center;
   row-gap: 1rem;
+  border: 2px solid #000;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 1rem;
 
   & h2, p { margin: 0; }
-  &__info { text-align: center; }
   &__image {
     border-bottom-left-radius: 30px;
     border-top-right-radius: 30px;
+  }
+  &__info {
+    text-align: center;
+    max-width: fit-content;
+
+    &-title {
+      font-size: 1.6rem;
+      color: black;
+      font-weight: 900;
+      letter-spacing: 0.04rem;
+    }
+
+    &-text {
+      font-size: 1.4rem;
+      color: #cdd0cf;
+    }
   }
 }

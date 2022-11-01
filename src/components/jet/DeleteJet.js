@@ -36,8 +36,8 @@ function DeleteJet(props) {
         />
       </div>
       <div className="delete-jet-card__info">
-        <h2>{name}</h2>
-        <p>{description}</p>
+        <h2 className="delete-jet-card__info-title">{name}</h2>
+        <p className="delete-jet-card__info-text">{description}</p>
       </div>
       <div>
         <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={(e) => handleDelete(e, id)}>Delete</Button>
