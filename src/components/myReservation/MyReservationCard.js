@@ -26,6 +26,8 @@ function MyReservationCard(props) {
     justifyContent: 'space-between',
   };
 
+  const dialog = 'This action cannot be undone. You will need to make a new reservation if you decide to recover your reservation.';
+
   return (
     <>
       <Box
@@ -61,7 +63,11 @@ function MyReservationCard(props) {
         <span>You are renting: </span>
         {jets.map((jet) => (jet.id === jetId ? jet.name : null))}
       </Box>
-      <AlertDialog cancel={handleCancel} />
+      <AlertDialog
+        cancel={handleCancel}
+        dialogContent={dialog}
+        cancelBtn="Cancel Reservation"
+      />
     </>
   );
 }
