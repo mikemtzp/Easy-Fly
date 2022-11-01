@@ -11,7 +11,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import './alert.scss';
 
 export default function AlertDialog(props) {
-  const { cancel, cancelBtn, dialogContent } = props;
+  const {
+    cancel, cancelBtn, dialogContent, dialogTitle,
+  } = props;
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -25,7 +27,7 @@ export default function AlertDialog(props) {
   return (
     <div>
       <Button variant="contained" color="error" onClick={handleClickOpen} startIcon={<DeleteIcon />}>
-        Cancel Reservation
+        {cancelBtn}
       </Button>
       <Dialog
         open={open}
@@ -34,7 +36,7 @@ export default function AlertDialog(props) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle className="dialogTitle" id="alert-dialog-title">
-          Cancel Reservation?
+          {dialogTitle}
         </DialogTitle>
         <DialogContent>
           <DialogContentText className="dialogText" id="alert-dialog-description">
@@ -56,4 +58,5 @@ AlertDialog.propTypes = {
   cancel: PropTypes.func.isRequired,
   cancelBtn: PropTypes.string.isRequired,
   dialogContent: PropTypes.string.isRequired,
+  dialogTitle: PropTypes.string.isRequired,
 };

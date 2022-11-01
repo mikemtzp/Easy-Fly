@@ -65,6 +65,7 @@ function MyReservationCard(props) {
       </Box>
       <AlertDialog
         cancel={handleCancel}
+        dialogTitle="Cancel Reservation?"
         dialogContent={dialog}
         cancelBtn="Cancel Reservation"
       />
