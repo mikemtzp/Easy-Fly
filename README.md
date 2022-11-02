@@ -46,9 +46,7 @@ $ gh repo clone KaskMIL/book-a-jet-front-end
 
 ### Usage
 
-Kindly modify the files as needed.
-
-You can run this command below:
+Open the repository directory in your terminal an run the command below:
 
 ```
 $ npm start
