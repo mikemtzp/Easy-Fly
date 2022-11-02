@@ -5,7 +5,7 @@ import './JetDetails.scss';
 import { IoChevronBackCircle } from 'react-icons/io5';
 import { BsFillCalendarCheckFill } from 'react-icons/bs';
 
-function JetDetails() {
+const JetDetails = () => {
   const { jets } = useSelector((state) => state.jets);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -55,6 +55,6 @@ function JetDetails() {
       </div>
     </section>
   );
-}
+};
 
 export default JetDetails;

@@ -49,48 +49,46 @@ const fadeInUp = {
   },
 };
 
-function SignupPage() {
-  return (
-    <Nav>
-      <RootStyle>
-        <Container maxWidth="sm">
-          <ContentStyle>
-            <HeadingStyle component={motion.div} {...fadeInUp} />
-            <Box>
-              <Box
-                component="img"
-                sx={{ margin: 'auto', width: 80, height: 80 }}
-                src="/static/login.jpg"
-                alt="logo"
-              />
-            </Box>
+const SignupPage = () => (
+  <Nav>
+    <RootStyle>
+      <Container maxWidth="sm">
+        <ContentStyle>
+          <HeadingStyle component={motion.div} {...fadeInUp} />
+          <Box>
+            <Box
+              component="img"
+              sx={{ margin: 'auto', width: 80, height: 80 }}
+              src="/static/login.jpg"
+              alt="logo"
+            />
+          </Box>
 
-            <Divider sx={{ my: 3 }} component={motion.div} {...fadeInUp}>
-              <Typography variant="h3" sx={{ color: 'text.secondary' }}>
-                Enter Your Details
-              </Typography>
-            </Divider>
-
-            <SignupForm />
-
-            <Typography
-              component={motion.p}
-              {...fadeInUp}
-              variant="h4"
-              align="center"
-              sx={{ mt: 3 }}
-            >
-              Have an account?
-              {' '}
-              <Link variant="h4" component={RouterLink} to="/login">
-                Login
-              </Link>
+          <Divider sx={{ my: 3 }} component={motion.div} {...fadeInUp}>
+            <Typography variant="h3" sx={{ color: 'text.secondary' }}>
+              Enter Your Details
             </Typography>
-          </ContentStyle>
-        </Container>
-      </RootStyle>
-    </Nav>
-  );
-}
+          </Divider>
+
+          <SignupForm />
+
+          <Typography
+            component={motion.p}
+            {...fadeInUp}
+            variant="h4"
+            align="center"
+            sx={{ mt: 3 }}
+          >
+            Have an account?
+            {' '}
+            <Link variant="h4" component={RouterLink} to="/login">
+              Login
+            </Link>
+          </Typography>
+        </ContentStyle>
+      </Container>
+    </RootStyle>
+  </Nav>
+);
 
 export default SignupPage;

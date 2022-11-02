@@ -10,7 +10,7 @@ import { logout } from '../../redux/users/userSlice';
 
 import './reservationPage.scss';
 
-function ReservationPage() {
+const ReservationPage = () => {
   const [city, setCity] = useState(cityData[0].city);
   const [bookBtn, setBookBtn] = useState(false);
   const [showSection, setShowSection] = useState(false);
@@ -79,6 +79,6 @@ function ReservationPage() {
       </Nav>
     </div>
   );
-}
+};
 
 export default ReservationPage;

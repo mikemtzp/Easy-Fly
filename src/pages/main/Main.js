@@ -10,7 +10,7 @@ import LeftArrow from '../../components/arrows/LeftArrow';
 import RightArrow from '../../components/arrows/RightArrow';
 import Nav from '../../components/nav/Nav';
 
-function Main() {
+const Main = () => {
   const { jets } = useSelector((state) => state.jets);
 
   const sliderSettings = {
@@ -71,6 +71,6 @@ function Main() {
       </Nav>
     </>
   );
-}
+};
 
 export default Main;

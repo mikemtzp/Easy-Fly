@@ -7,7 +7,7 @@ import { getJetsThunk } from '../../redux/jets/jetSlice';
 import './DeleteJet.scss';
 import AlertDialog from '../myReservation/Alert';
 
-function DeleteJet(props) {
+const DeleteJet = (props) => {
   const {
     name, description, image, id,
   } = props;
@@ -47,7 +47,7 @@ function DeleteJet(props) {
       />
     </div>
   );
-}
+};
 
 DeleteJet.propTypes = {
   name: PropTypes.string.isRequired,

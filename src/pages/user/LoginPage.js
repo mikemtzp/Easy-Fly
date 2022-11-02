@@ -48,47 +48,45 @@ const fadeInUp = {
   },
 };
 
-function LoginPage() {
-  return (
-    <Nav>
-      <RootStyle>
-        <Container maxWidth="sm">
-          <ContentStyle>
-            <HeadingStyle component={motion.div} {...fadeInUp}>
-              <Box>
-                <Box
-                  component="img"
-                  sx={{ width: 80, height: 80 }}
-                  src="/static/login.jpg"
-                  alt="logo"
-                />
-              </Box>
+const LoginPage = () => (
+  <Nav>
+    <RootStyle>
+      <Container maxWidth="sm">
+        <ContentStyle>
+          <HeadingStyle component={motion.div} {...fadeInUp}>
+            <Box>
+              <Box
+                component="img"
+                sx={{ width: 80, height: 80 }}
+                src="/static/login.jpg"
+                alt="logo"
+              />
+            </Box>
 
-              <Typography variant="h3" sx={{ color: 'text.secondary', mb: 5 }}>
-                Login to your account
-              </Typography>
-            </HeadingStyle>
-
-            <LoginFrom />
-
-            <Typography
-              component={motion.p}
-              {...fadeInUp}
-              variant="h5"
-              align="center"
-              sx={{ mt: 3 }}
-            >
-              Don’t have an account?
-              {' '}
-              <Link variant="h4" component={RouterLink} to="/signup">
-                Sign up
-              </Link>
+            <Typography variant="h3" sx={{ color: 'text.secondary', mb: 5 }}>
+              Login to your account
             </Typography>
-          </ContentStyle>
-        </Container>
-      </RootStyle>
-    </Nav>
-  );
-}
+          </HeadingStyle>
+
+          <LoginFrom />
+
+          <Typography
+            component={motion.p}
+            {...fadeInUp}
+            variant="h5"
+            align="center"
+            sx={{ mt: 3 }}
+          >
+            Don’t have an account?
+            {' '}
+            <Link variant="h4" component={RouterLink} to="/signup">
+              Sign up
+            </Link>
+          </Typography>
+        </ContentStyle>
+      </Container>
+    </RootStyle>
+  </Nav>
+);
 
 export default LoginPage;

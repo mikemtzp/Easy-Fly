@@ -4,7 +4,7 @@ import './confirmData.scss';
 import BasicTable from './Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function ConfirmData(props) {
+const ConfirmData = (props) => {
   const {
     reservation, jetName, days, ppe, finFee, city, handleForm,
     confirmPage, setConfirmPage,
@@ -41,7 +41,7 @@ function ConfirmData(props) {
       </div>
     </section>
   );
-}
+};
 
 ConfirmData.propTypes = {
   reservation: PropTypes.func.isRequired,
