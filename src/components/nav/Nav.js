@@ -23,7 +23,7 @@ function getWindowSize() {
   return { innerWidth };
 }
 
-function Nav({ children }) {
+const Nav = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const { name, status: userStatus } = useSelector((state) => state.user);
@@ -307,7 +307,7 @@ function Nav({ children }) {
       )}
     </>
   );
-}
+};
 
 Nav.propTypes = {
   children: PropTypes.node.isRequired,

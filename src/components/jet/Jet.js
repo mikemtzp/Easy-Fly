@@ -5,7 +5,7 @@ import './Jet.scss';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
-function Jet(props) {
+const Jet = (props) => {
   const {
     name, description, image, id,
   } = props;
@@ -45,7 +45,7 @@ function Jet(props) {
       </Link>
     </div>
   );
-}
+};
 
 Jet.propTypes = {
   name: PropTypes.string.isRequired,

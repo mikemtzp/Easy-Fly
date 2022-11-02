@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import './alert.scss';
 
-export default function AlertDialog(props) {
+const AlertDialog = (props) => {
   const {
     cancel, cancelBtn, dialogContent, dialogTitle,
   } = props;
@@ -60,7 +60,7 @@ export default function AlertDialog(props) {
       </Dialog>
     </div>
   );
-}
+};
 
 AlertDialog.propTypes = {
   cancel: PropTypes.func.isRequired,
@@ -68,3 +68,5 @@ AlertDialog.propTypes = {
   dialogContent: PropTypes.string.isRequired,
   dialogTitle: PropTypes.string.isRequired,
 };
+
+export default AlertDialog;

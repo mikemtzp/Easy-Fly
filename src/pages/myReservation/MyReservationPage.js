@@ -6,7 +6,7 @@ import MyReservationCard from '../../components/myReservation/MyReservationCard'
 import Nav from '../../components/nav/Nav';
 import './myReservation.scss';
 
-function MyReservation() {
+const MyReservation = () => {
   const { reservations } = useSelector((state) => state.reservations);
 
   return (
@@ -54,6 +54,6 @@ function MyReservation() {
       </Nav>
     </div>
   );
-}
+};
 
 export default MyReservation;

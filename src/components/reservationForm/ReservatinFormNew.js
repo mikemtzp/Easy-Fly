@@ -11,7 +11,7 @@ import { addReservation } from '../../redux/reservation/reservationSlice';
 import './ReservationFormNew.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function ReservationFormNew(props) {
+const ReservationFormNew = (props) => {
   const {
     reserveCity, display, showForm, handleShowForm,
     showSection, handleShowSection,
@@ -192,7 +192,7 @@ function ReservationFormNew(props) {
       />
     </section>
   );
-}
+};
 
 ReservationFormNew.propTypes = {
   reserveCity: PropTypes.string.isRequired,

@@ -4,7 +4,7 @@ import DeleteJet from '../../components/jet/DeleteJet';
 import Nav from '../../components/nav/Nav';
 import './DeleteJetPage.scss';
 
-function DeleteJetPage() {
+const DeleteJetPage = () => {
   const { jets } = useSelector((state) => state.jets);
 
   return (
@@ -23,6 +23,6 @@ function DeleteJetPage() {
       </div>
     </Nav>
   );
-}
+};
 
 export default DeleteJetPage;

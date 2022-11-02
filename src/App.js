@@ -20,7 +20,7 @@ import {
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
   useEffect(() => {
@@ -74,6 +74,6 @@ function App() {
       />
     </>
   );
-}
+};
 
 export default App;

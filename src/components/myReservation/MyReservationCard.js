@@ -8,12 +8,10 @@ import { deleteReservation } from '../../redux/reservation/reservationAPI';
 import { getReservationsThunk } from '../../redux/reservation/reservationSlice';
 import './myReservationCard.scss';
 
-function MyReservationCard(props) {
+const MyReservationCard = (props) => {
   const {
     city, startingDay, finishDay, jetId, reservationId,
   } = props;
-
-  console.log(reservationId);
 
   const { jets } = useSelector((state) => state.jets);
   const reservation = { id: reservationId };
@@ -79,7 +77,7 @@ function MyReservationCard(props) {
       />
     </>
   );
-}
+};
 
 MyReservationCard.propTypes = {
   reservationId: PropTypes.number.isRequired,

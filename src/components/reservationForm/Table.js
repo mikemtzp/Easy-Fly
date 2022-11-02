@@ -7,13 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-function createData(title, data) {
-  return {
-    title, data,
-  };
-}
+const createData = (title, data) => ({ title, data });
 
-export default function BasicTable(props) {
+const BasicTable = (props) => {
   const {
     jet, price, origin, start, end,
   } = props;
@@ -48,7 +44,7 @@ export default function BasicTable(props) {
       </Table>
     </TableContainer>
   );
-}
+};
 
 BasicTable.propTypes = {
   jet: PropTypes.string.isRequired,
@@ -62,3 +58,5 @@ BasicTable.defaultProps = {
   start: '',
   end: '',
 };
+
+export default BasicTable;
