@@ -18,6 +18,7 @@ const reservationSlice = createSlice({
     addReservation: (state, action) => {
       state.reservations.push(action.payload);
     },
+    cleanReservations: () => [],
   },
   extraReducers: {
     [getReservationsThunk.pending]: (state) => ({
@@ -36,5 +37,5 @@ const reservationSlice = createSlice({
   },
 });
 
-export const { cancelReservation, addReservation } = reservationSlice.actions;
+export const { cancelReservation, addReservation, cleanReservations } = reservationSlice.actions;
 export default reservationSlice.reducer;

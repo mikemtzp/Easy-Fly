@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IconContext } from 'react-icons';
 
 import { authStatus, logout } from '../../redux/users/userSlice';
+import { cleanReservations } from '../../redux/reservation/reservationSlice';
 
 import './Nav.scss';
 
@@ -42,6 +43,7 @@ function Nav({ children }) {
 
   const showSideBar = () => setSidebar(!sidebar);
   const handleLogout = () => {
+    dispatch(cleanReservations());
     dispatch(logout());
     navigate('/');
     toast.success('Successfully logged out');
