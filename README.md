@@ -11,6 +11,8 @@
 - [x] Linter: [stylelint](https://stylelint.io/)
 - [x] Code Editor: [VS Code](https://code.visualstudio.com/)
 
+## Live Demo: [EasyFly](https://6362dd43988f2d00a9c59c3e--timely-sprinkles-616361.netlify.app/)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
