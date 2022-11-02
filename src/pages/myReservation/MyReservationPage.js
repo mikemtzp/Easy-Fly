@@ -15,11 +15,10 @@ function MyReservation() {
         <Container
           sx={{
             flexDirection: 'column',
-            padding: '2rem 0',
             backgroundColor: '#95bf02',
             color: 'white',
-            height: '100vh',
-            width: '100%',
+            flexFlow: 1,
+            padding: '2rem 0',
           }}
           className="myReservation-container"
           component="section"
@@ -38,7 +37,7 @@ function MyReservation() {
                 key={reservation.created_at}
                 className="myReservationCard-container"
                 sx={{
-                  maxWidth: '600px',
+                  minWidth: '350px',
                 }}
               >
                 <MyReservationCard

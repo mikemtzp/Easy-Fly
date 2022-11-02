@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { Typography } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
+import { IconContext } from 'react-icons';
 
 import { authStatus, logout } from '../../redux/users/userSlice';
 
@@ -97,12 +98,12 @@ function Nav({ children }) {
                         <span>Delete Jet</span>
                       </Link>
                     </li>
-                    <li className="desktop-ba">
+                    <li className="nav-text logout-li">
                       <Typography>{`Signed in as ${name}!`}</Typography>
                       <button
                         type="button"
                         onClick={handleLogout}
-                        className="link"
+                        className="mob-logout"
                       >
                         <BtIcons.BiLogIn />
                         <span className="title">Logout</span>
@@ -125,6 +126,38 @@ function Nav({ children }) {
                     </li>
                   </>
                 )}
+                <li className="liIcons">
+                  <div className="icons">
+                    <div className="icon-container">
+                      <IconContext.Provider value={{ size: '1.5rem' }}>
+                        <FaIcons.FaTwitter />
+                      </IconContext.Provider>
+                    </div>
+                    <div className="icon-container">
+                      <IconContext.Provider value={{ size: '1.5rem' }}>
+                        <FaIcons.FaFacebookF />
+                      </IconContext.Provider>
+                    </div>
+                    <div className="icon-container">
+                      <IconContext.Provider value={{ size: '1.5rem' }}>
+                        <FaIcons.FaGooglePlusG />
+                      </IconContext.Provider>
+                    </div>
+                    <div className="icon-container">
+                      <IconContext.Provider value={{ size: '1.5rem' }}>
+                        <FaIcons.FaVimeoV />
+                      </IconContext.Provider>
+                    </div>
+                    <div className="icon-container">
+                      <IconContext.Provider value={{ size: '1.5rem' }}>
+                        <FaIcons.FaPinterestP />
+                      </IconContext.Provider>
+                    </div>
+                  </div>
+                  <a className="footer" href="https://github.com/KaskMIL/book-a-jet-front-end#readme">
+                    @ 2022 Worash Mike Alex Tom
+                  </a>
+                </li>
               </ul>
             </nav>
           </motion.div>
@@ -202,7 +235,7 @@ function Nav({ children }) {
               {userStatus === authStatus.authenticated ? (
                 <li className="desktop-ba">
                   <Typography>{`Signed in as ${name}!`}</Typography>
-                  <button type="button" onClick={handleLogout} className="link logoutBtn">
+                  <button type="button" onClick={handleLogout} className="logoutBtn link">
                     <BtIcons.BiLogIn />
                     <span className="title">Logout</span>
                   </button>
@@ -233,6 +266,38 @@ function Nav({ children }) {
                   </li>
                 </>
               )}
+              <li className="liIcons">
+                <div className="icons">
+                  <div className="icon-container">
+                    <IconContext.Provider value={{ size: '1.5rem' }}>
+                      <FaIcons.FaTwitter />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="icon-container">
+                    <IconContext.Provider value={{ size: '1.5rem' }}>
+                      <FaIcons.FaFacebookF />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="icon-container">
+                    <IconContext.Provider value={{ size: '1.5rem' }}>
+                      <FaIcons.FaGooglePlusG />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="icon-container">
+                    <IconContext.Provider value={{ size: '1.5rem' }}>
+                      <FaIcons.FaVimeoV />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="icon-container">
+                    <IconContext.Provider value={{ size: '1.5rem' }}>
+                      <FaIcons.FaPinterestP />
+                    </IconContext.Provider>
+                  </div>
+                </div>
+                <a className="footer" href="https://github.com/KaskMIL/book-a-jet-front-end#readme">
+                  @ 2022 Worash Mike Alex Tom
+                </a>
+              </li>
             </ul>
           </div>
           <main className="main">{children}</main>

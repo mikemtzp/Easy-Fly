@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import ConfirmData from './ConfirmData';
 import { postReservation } from '../../redux/reservation/reservationAPI';
 import { addReservation } from '../../redux/reservation/reservationSlice';
@@ -64,8 +65,13 @@ function ReservationFormNew(props) {
     e.preventDefault();
     const reserve = reservation();
     const response = await postReservation(reserve);
-    dispatch(addReservation(response.reservation));
-    navigate('/myreservations');
+    if (response.reservation !== null) {
+      dispatch(addReservation(response.reservation));
+      navigate('/myreservations');
+      toast.success('Reservation Booked Successfuly', { theme: 'colored' });
+    } else {
+      toast.error('Unable to create Reservation');
+    }
   };
 
   return (

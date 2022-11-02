@@ -52,7 +52,6 @@
 .nav-text {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   padding: 0.8rem 0 0.8rem 1.6rem;
   height: 6rem;
 }
@@ -103,7 +102,30 @@
 
 .logoutBtn {
   width: 100%;
-  align-items: baseline;
+  background-color: transparent;
+  border: none;
+}
+
+.mob-logout {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  color: white;
+  gap: 3px;
+  padding: 1.5rem 10px;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 900;
+  align-items: center;
+
+  .title {
+    margin-left: 1rem;
+  }
+}
+
+.logout-li {
+  flex-direction: column;
 }
 
 .desk-nav {
@@ -141,7 +163,7 @@
   text-decoration: none;
   font-size: 1.6rem;
   font-weight: 900;
-  align-items: flex-end;
+  align-items: center;
 
   .title {
     margin-left: 1rem;
@@ -187,6 +209,41 @@
           width: 75vw;
         }
       }
+    }
+  }
+}
+
+.liIcons {
+  padding: 2rem;
+  position: absolute;
+  left: -2px;
+  bottom: 0;
+
+  .footer {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .icon-container {
+    color: white;
+    border-color: transparent;
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  .liIcons {
+    .footer {
+      color: black;
+    }
+
+    .icon-container {
+      color: #464646;
     }
   }
 }
