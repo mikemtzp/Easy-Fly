@@ -1,13 +1,11 @@
 import axios from 'axios';
 import api from '../../config';
-import LocalStorage from '../../app/LocalStorage';
 
 const JETAPPI = `${api}`;
-const storage = new LocalStorage();
-const token = storage.get('token');
 
 export const addNewJet = async (jet) => {
   try {
+    const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const res = await axios.post(`${JETAPPI}/jets`, jet, {
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -28,6 +26,7 @@ export const getJets = async () => {
 
 export const deleteJet = async (jet) => {
   try {
+    const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const response = await axios.delete(`${api}/jets/${jet.id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });

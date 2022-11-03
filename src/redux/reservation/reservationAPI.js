@@ -1,12 +1,9 @@
 import axios from 'axios';
 import api from '../../config';
-import LocalStorage from '../../app/LocalStorage';
-
-const storage = new LocalStorage();
-const token = storage.get('token');
 
 export const postReservation = async (reservation) => {
   try {
+    const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const res = await axios.post(`${api}/reservations`, { reservation }, { headers: { Authorization: `Bearer ${token}` } });
     return res.data;
   } catch (err) {
@@ -16,6 +13,7 @@ export const postReservation = async (reservation) => {
 
 export const getReservations = async () => {
   try {
+    const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const response = await axios.get(`${api}/reservations`, { headers: { Authorization: `Bearer ${token}` } });
     return response.data;
   } catch (err) {
@@ -25,6 +23,7 @@ export const getReservations = async () => {
 
 export const deleteReservation = async (reservation) => {
   try {
+    const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const res = await axios.delete(`${api}/reservations/${reservation.id}`, { headers: { Authorization: `Bearer ${token}` } });
     return res;
   } catch (err) {
