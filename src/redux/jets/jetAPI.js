@@ -7,7 +7,7 @@ export const addNewJet = async (jet) => {
   try {
     const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const res = await axios.post(`${JETAPPI}/jets`, jet, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${token.token}` },
     });
     return res.data;
   } catch (err) {
@@ -28,7 +28,7 @@ export const deleteJet = async (jet) => {
   try {
     const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
     const response = await axios.delete(`${api}/jets/${jet.id}`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${token.token}` },
     });
     return response;
   } catch (err) {
