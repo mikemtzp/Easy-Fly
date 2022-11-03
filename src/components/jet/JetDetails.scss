@@ -1,0 +1,114 @@
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 90vh;
+  text-align: center;
+
+  &__back {
+    display: flex;
+    outline: none;
+    border: none;
+    background-color: #97bf11;
+    padding: 1rem 2rem;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    align-self: flex-start;
+    font-size: 2rem;
+    color: #e4eec1;
+
+    &:hover { color: #0d6efd; }
+  }
+
+  &__image {
+    width: 80%;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  &__details {
+    height: 40%;
+
+    &__info {
+      margin-bottom: 3rem;
+
+      &-name { text-transform: uppercase; }
+
+      &-table {
+        margin-top: 1rem;
+        text-transform: capitalize;
+        width: 80vw;
+
+        &-body {
+          & tr:nth-child(odd) { background-color: #97bf11; }
+          & tr:nth-child(3)td:nth-child(2)::before { content: "$"; }
+          & tr:nth-child(4)td:nth-child(2)::before { content: "$"; }
+        }
+      }
+    }
+
+    &__reserve {
+      padding: 1rem;
+      width: 80vw;
+      background-color: #97bf11;
+      text-decoration: none;
+      border-radius: 5px;
+      color: #fff;
+
+      &:hover { color: #0d6efd; }
+
+      &-calendar {
+        margin-right: 1rem;
+        vertical-align: text-bottom;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+
+    &__back {
+      align-self: flex-end;
+      margin-bottom: 5rem;
+
+      &:hover { cursor: pointer; }
+    }
+
+    &__image {
+      width: 60%;
+      border-bottom-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: 30%;
+
+      &__info {
+        margin-bottom: 0;
+
+        &-name { text-transform: uppercase; }
+
+        &-table {
+          margin-top: 1rem;
+          text-transform: capitalize;
+          width: 20vw;
+          padding-left: 0;
+        }
+      }
+
+      &__reserve {
+        width: 10vw;
+      }
+    }
+  }
+}

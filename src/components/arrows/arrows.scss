@@ -1,0 +1,31 @@
+.button-left {
+  left: -50%;
+  border-top-right-radius: 45%;
+  border-bottom-right-radius: 45%;
+  padding: 2.5rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.button-right {
+  right: -50%;
+  border-top-left-radius: 45%;
+  border-bottom-left-radius: 45%;
+  padding: 2.5rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 500px) {
+  .button-left {
+    left: -12.7vw;
+  }
+
+  .button-right {
+    right: -12.7vw;
+  }
+}

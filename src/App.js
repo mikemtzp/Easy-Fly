@@ -1,58 +1,79 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import ReservationPage from './pages/reservation/ReservationPage';
+import MyReservation from './pages/myReservation/MyReservationPage';
+import Main from './pages/main/Main';
+import SignupPage from './pages/user/SignupPage';
+import LoginPage from './pages/user/LoginPage';
+import AddJet from './pages/addjet/AddJet';
+import JetDetailsPage from './pages/jetdetails/JetDetailsPage';
+import DeleteJetPage from './pages/deleteJet/DeleteJetPage';
+import { getJetsThunk } from './redux/jets/jetSlice';
+import { getReservationsThunk } from './redux/reservation/reservationSlice';
+import {
+  authenticateThunk,
+  logout,
+  setUnAuthenticated,
+} from './redux/users/userSlice';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(getJetsThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(authenticateThunk(token))
+        .unwrap()
+        .then(() => {})
+        .catch(() => {
+          toast.error('You need to login again!');
+          dispatch(logout());
+        });
+    } else {
+      dispatch(setUnAuthenticated());
+    }
+  }, [dispatch, token]);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getReservationsThunk());
+    }
+  }, [dispatch, token]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/reservation" element={<ReservationPage />} />
+          <Route path="/myreservations" element={<MyReservation />} />
+          <Route path="/jets/:id" element={<JetDetailsPage />} />
+          <Route path="/add-jet" element={<AddJet />} />
+          <Route path="/delete-jet" element={<DeleteJetPage />} />
+          <Route index path="/" element={<Main />} />
+        </Routes>
+      </Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
-}
+};
 
 export default App;

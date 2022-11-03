@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+.myReservation {
+  width: 100%;
+
+  .mobile-container,
+  .main {
+    background-color: #95bf02;
+  }
+
+  .mobile-container {
+    .navbar {
+      color: white;
+    }
+  }
+}
+
+.myReservation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 100%;
+  font-family: 'Lato', sans-serif;
+
+  h1 {
+    margin-bottom: 3rem;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    font-size: 2.8rem;
+  }
+}
