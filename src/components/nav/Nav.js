@@ -26,9 +26,10 @@ function getWindowSize() {
 const Nav = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  const { name, status: userStatus } = useSelector((state) => state.user);
+  const { status: userStatus } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -101,7 +102,7 @@ const Nav = ({ children }) => {
                       </Link>
                     </li>
                     <li className="nav-text logout-li">
-                      <Typography>{`Signed in as ${name}!`}</Typography>
+                      <Typography>{`Signed in as ${token.name}!`}</Typography>
                       <button
                         type="button"
                         onClick={handleLogout}
@@ -236,7 +237,7 @@ const Nav = ({ children }) => {
               )}
               {userStatus === authStatus.authenticated ? (
                 <li className="desktop-ba">
-                  <Typography>{`Signed in as ${name}!`}</Typography>
+                  <Typography>{`Signed in as ${token.name}!`}</Typography>
                   <button type="button" onClick={handleLogout} className="logoutBtn link">
                     <BtIcons.BiLogIn />
                     <span className="title">Logout</span>
