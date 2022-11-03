@@ -23,7 +23,7 @@ const BasicTable = (props) => {
   ];
   return (
     <TableContainer>
-      <Table sx={{ minWidth: 450, marginBottom: '2rem' }} aria-label="simple table">
+      <Table sx={{ minWidth: 300, marginBottom: '2rem' }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell sx={{ color: 'white', fontWeight: '700', fontSize: '2rem' }}>Details</TableCell>
