@@ -13,6 +13,12 @@
 
 ## Live Demo: [EasyFly](https://timely-sprinkles-616361.netlify.app/)
 
+## Kanban Board
+
+- [Link to the Kanban](https://github.com/users/KaskMIL/projects/1)
+- [Initial state](https://github.com/KaskMIL/book-a-jet-backend/issues/15)
+- Number of team members: 4
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
