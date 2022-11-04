@@ -29,7 +29,7 @@ const Nav = ({ children }) => {
   const { status: userStatus } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { token } = JSON.parse(localStorage.getItem('easy-fly-data'));
+  const { username } = JSON.parse(localStorage.getItem('easy-fly-data'));
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -102,7 +102,7 @@ const Nav = ({ children }) => {
                       </Link>
                     </li>
                     <li className="nav-text logout-li">
-                      <Typography>{`Signed in as ${token.name}!`}</Typography>
+                      <Typography>{`Signed in as ${username}!`}</Typography>
                       <button
                         type="button"
                         onClick={handleLogout}
@@ -157,7 +157,10 @@ const Nav = ({ children }) => {
                       </IconContext.Provider>
                     </div>
                   </div>
-                  <a className="footer" href="https://github.com/KaskMIL/book-a-jet-front-end#readme">
+                  <a
+                    className="footer"
+                    href="https://github.com/KaskMIL/book-a-jet-front-end#readme"
+                  >
                     @ 2022 Worash Mike Alex Tom
                   </a>
                 </li>
@@ -237,8 +240,12 @@ const Nav = ({ children }) => {
               )}
               {userStatus === authStatus.authenticated ? (
                 <li className="desktop-ba">
-                  <Typography>{`Signed in as ${token.name}!`}</Typography>
-                  <button type="button" onClick={handleLogout} className="logoutBtn link">
+                  <Typography>{`Signed in as ${username}!`}</Typography>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="logoutBtn link"
+                  >
                     <BtIcons.BiLogIn />
                     <span className="title">Logout</span>
                   </button>
@@ -297,7 +304,10 @@ const Nav = ({ children }) => {
                     </IconContext.Provider>
                   </div>
                 </div>
-                <a className="footer" href="https://github.com/KaskMIL/book-a-jet-front-end#readme">
+                <a
+                  className="footer"
+                  href="https://github.com/KaskMIL/book-a-jet-front-end#readme"
+                >
                   @ 2022 Worash Mike Alex Tom
                 </a>
               </li>
