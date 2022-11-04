@@ -18,7 +18,7 @@ const initialState = {
   name: '',
   username: '',
   role: '',
-  token: storage.get('token').token,
+  token: storage.get('token'),
 };
 
 export const loginThunk = createAsyncThunk('user/login', async (user) => {
@@ -56,6 +56,7 @@ const userSlice = createSlice({
   reducers: {
     logout: () => {
       storage.remove('token');
+      storage.remove('username');
       return {
         ...initialState,
         status: authStatus.unauthenticated,
@@ -76,7 +77,9 @@ const userSlice = createSlice({
       status: authStatus.authenticating,
     }),
     [loginThunk.fulfilled]: (state, { payload }) => {
-      storage.set('token', payload.data);
+      storage.set('token', payload.data.token);
+      storage.set('username', payload.data.username);
+
       return {
         ...state,
         ...payload.data,
