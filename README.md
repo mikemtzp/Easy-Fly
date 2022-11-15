@@ -11,7 +11,7 @@
 - [x] Linter: [stylelint](https://stylelint.io/)
 - [x] Code Editor: [VS Code](https://code.visualstudio.com/)
 
-## Live Demo: [EasyFly](https://timely-sprinkles-616361.netlify.app/)
+## Live Demo: [EasyFly](https://easy-fly.netlify.app/)
 
 ## Kanban Board
 
