@@ -67,7 +67,7 @@ const SignupForm = () => {
           navigate('/login');
         })
         .catch(() => {
-          toast.error('Registraytion Failed!');
+          toast.error('Registration Failed!');
         });
     },
   });

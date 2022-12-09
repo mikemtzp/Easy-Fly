@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Book-a-jet
+# Easy Fly
 
-> In the Book a Jet app you can reserve a jet in a specific range of date, see the details from a jet model, see or cancel your reservations, and add or delete a new jet to be available for reservation. This repo manages all the necessary files to run the Front-End needed to display and manipulate the data retrieved from the API [Book-a-Jet-Back-End](https://github.com/mikemtzp/Easy-Fly-Back-end).
+> In Easy Fly app you can reserve a jet in a specific range of date, see the details from a jet model, see or cancel your reservations, and add or delete a new jet to be available for reservation. This repo manages all the necessary files to run the Front-End needed to display and manipulate the data retrieved from the API [Easy-Fly-Back-end](https://github.com/mikemtzp/Easy-Fly-Back-end).
 
 ## Built With 🛠️
 
@@ -11,7 +11,7 @@
 - [x] Linter: [stylelint](https://stylelint.io/)
 - [x] Code Editor: [VS Code](https://code.visualstudio.com/)
 
-## Live Demo: [Easy Fly](https://easy-fly.netlify.app/)
+## Live Demo: [Easy Fly](https://easy-fly.vercel.app/)
 
 ## Kanban Board
 
@@ -68,14 +68,10 @@ $ npm start
 - Twitter: [@twitterhandle](https://twitter.com/WorashAboche)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/worash-abocherugn-a02219154/)
 
-👤 **Mike Martine**
+👤 **Mike Martinez**
 
-- GitHub: [
-  @mikemtzp
-  ](https://github.com/mikemtzp)
-- Twitter: [
-  @mikemtzp
-  ](https://twitter.com/mikemtzp)
+- GitHub: [@mikemtzp](https://github.com/mikemtzp)
+- Twitter: [@mikemtzp](https://twitter.com/mikemtzp)
 - LinkedIn: [Mike Martínez](https://www.linkedin.com/in/mike-mart%C3%ADnez/)
 
 👤 **Tom Milanesi**
